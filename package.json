@@ -140,7 +140,7 @@
   "bugs": {
     "url": "https://github.com/mrdoob/three.js/issues"
   },
-  "homepage": "https://threejs.org/",
+  "homepage": "https://threejs.pro/",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.19.1",
