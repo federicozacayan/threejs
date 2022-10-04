@@ -86,7 +86,7 @@
 
 			// Localisation
 
-			let language = 'es';
+			let language = localStorage.getItem('language') || 'es';
 
 			if ( /^(api|manual|examples)/.test( hash ) ) {
 
@@ -105,12 +105,13 @@
 				}
 
 			}
-
+			localStorage.setItem('language', language)
 			const languageSelect = document.getElementById( 'language' );
 			languageSelect.value = language;
 			languageSelect.addEventListener( 'change', function () {
 
 				setLanguage( this.value );
+				localStorage.setItem('language', this.value)
 
 			} );
 
