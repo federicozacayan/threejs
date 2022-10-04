@@ -31,6 +31,7 @@
 					<input placeholder="" type="text" id="filterInput" autocorrect="off" autocapitalize="off" spellcheck="false" />
 					<div id="exitSearchButton"></div>
 					<select id="language">
+						<option value="es">es</option>
 						<option value="en">en</option>
 						<option value="ar">ar</option>
 						<option value="ko">한국어</option>
@@ -85,17 +86,17 @@
 
 			// Localisation
 
-			let language = 'en';
+			let language = 'es';
 
 			if ( /^(api|manual|examples)/.test( hash ) ) {
 
-				const hashLanguage = /^(api|manual|examples)\/(en|ar|ko|zh|ja|it|pt-br|fr)\//.exec( hash );
+				const hashLanguage = /^(api|manual|examples)\/(es|en|ar|ko|zh|ja|it|pt-br|fr)\//.exec( hash );
 
 				if ( hashLanguage === null ) {
 
 					// Route old non-localised api links
 
-					window.location.hash = hash.replace( /^(api|manual|examples)/, '$1/en' );
+					window.location.hash = hash.replace( /^(api|manual|examples)/, '$1/es' );
 
 				} else {
 

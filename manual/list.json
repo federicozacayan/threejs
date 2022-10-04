@@ -60,6 +60,67 @@
 			"Material Table": "en/material-table"
 		}
 	},
+	"es": {
+		"Basics": {
+			"Fundamentals": "en/fundamentals",
+			"Responsive Design": "en/responsive",
+			"Prerequisites": "en/prerequisites",
+			"Setup": "en/setup"
+		},
+		"Fundamentals": {
+			"Primitives": "en/primitives",
+			"Scenegraph": "en/scenegraph",
+			"Materials": "en/materials",
+			"Textures": "en/textures",
+			"Lights": "en/lights",
+			"Cameras": "en/cameras",
+			"Shadows": "en/shadows",
+			"Fog": "en/fog",
+			"Render Targets": "en/rendertargets",
+			"Custom BufferGeometry": "en/custom-buffergeometry"
+		},
+		"Tips": {
+			"Rendering On Demand": "en/rendering-on-demand",
+			"Debugging JavaScript": "en/debugging-javascript",
+			"Debugging GLSL": "en/debugging-glsl",
+			"Taking a screenshot": "en/tips#screenshot",
+			"Prevent the Canvas Being Cleared": "en/tips#preservedrawingbuffer",
+			"Get Keyboard Input From a Canvas": "en/tips#tabindex",
+			"Make the Canvas Transparent": "en/tips#transparent-canvas",
+			"Use three.js as Background in HTML": "en/tips#html-background"
+		},
+		"Optimization": {
+			"Optimizing Lots of Objects": "en/optimize-lots-of-objects",
+			"Optimizing Lots of Objects Animated": "en/optimize-lots-of-objects-animated",
+			"Using OffscreenCanvas in a Web Worker": "en/offscreencanvas"
+		},
+		"Solutions": {
+			"Load an .OBJ file": "en/load-obj",
+			"Load a .GLTF file": "en/load-gltf",
+			"Add a Background or Skybox": "en/backgrounds",
+			"How to Draw Transparent Objects": "en/transparency",
+			"Multiple Canvases, Multiple Scenes": "en/multiple-scenes",
+			"Picking Objects with the mouse": "en/picking",
+			"Post Processing": "en/post-processing",
+			"Applying a LUT File for effects": "en/post-processing-3dlut",
+			"Using Shadertoy shaders": "en/shadertoy",
+			"Aligning HTML Elements to 3D": "en/align-html-elements-to-3d",
+			"Using Indexed Textures for Picking and Color": "en/indexed-textures",
+			"Using A Canvas for Dynamic Textures": "en/canvas-textures",
+			"Billboards and Facades": "en/billboards",
+			"Freeing Resources": "en/cleanup",
+			"Making Voxel Geometry (Minecraft)": "en/voxel-geometry",
+			"Start making a Game": "en/game"
+		},
+		"WebXR": {
+			"VR - Basics": "en/webxr-basics",
+			"VR - Look To Select": "en/webxr-look-to-select",
+			"VR - Point To Select": "en/webxr-point-to-select"
+		},
+		"Reference": {
+			"Material Table": "en/material-table"
+		}
+	},
 	"fr": {
 		"Bases": {
 			"Principes de base": "fr/fundamentals",
