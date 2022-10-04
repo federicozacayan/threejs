@@ -131,8 +131,8 @@ let version;
 async function fixJSForCodeSite(js) {
   const moduleRE = /(import.*?)('|")(.*?)('|")/g;
 
-  // convert https://threejs.org/build/three.module.js -> https://unpkg.com/three@<version>
-  // convert https://threejs.org/examples/jsm/.?? -> https://unpkg.com/three@<version>/examples/jsm/.??
+  // convert https://threejs.pro/build/three.module.js -> https://unpkg.com/three@<version>
+  // convert https://threejs.pro/examples/jsm/.?? -> https://unpkg.com/three@<version>/examples/jsm/.??
 
   if (!version) {
     try {

@@ -37,7 +37,7 @@
 
 		void main() {
 				// Prepare transforms to map to "camera view". See also:
-				// https://threejs.org/docs/#api/renderers/webgl/WebGLProgram
+				// https://threejs.pro/docs/#api/renderers/webgl/WebGLProgram
 				mat4 viewtransformf = modelViewMatrix;
 				mat4 viewtransformi = inverse(modelViewMatrix);
 
