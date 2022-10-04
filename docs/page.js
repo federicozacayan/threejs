@@ -100,6 +100,7 @@ function onDocumentLoad() {
 
 	const button = document.createElement( 'div' );
 	button.id = 'button';
+	button.style.display = 'none';
 	button.innerHTML = '<img src="../files/ic_mode_edit_black_24dp.svg">';
 	button.addEventListener( 'click', function () {
 
