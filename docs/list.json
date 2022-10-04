@@ -441,7 +441,7 @@
 		"Manual": {
 	
 			"Getting Started": {
-				"Creating a scene": "manual/es/introduction/Creating-a-scene",
+				"Creando una escena": "manual/es/introduction/Creando-una-escena",
 				"Installation": "manual/es/introduction/Installation",
 				"WebGL compatibility check": "manual/es/introduction/WebGL-compatibility-check",
 				"How to run things locally": "manual/es/introduction/How-to-run-things-locally",

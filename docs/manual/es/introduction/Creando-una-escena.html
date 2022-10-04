@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<base href="../../../" />
+		<script src="page.js"></script>
+		<link type="text/css" rel="stylesheet" href="page.css" />
+	</head>
+	<body>
+		<h1>[name]</h1>
+
+		<p>El objetivo de esta sección es brindar una breve introducción a three.js. Comenzaremos montando una escena, con un cubo giratorio. Se proporciona un ejemplo completo en la parte inferior de la página en caso de que se quede atascado y necesite ayuda.</p>
+
+		<h2>Antes de comenzar</h2>
+
+		<p>Antes de que pueda usar three.js, necesita un lugar para mostrarlo. Guarde el siguiente código HTML en un archivo en su computadora, junto con una copia de [link:https://threejs.pro/build/three.js three.js] en el directorio js/ y ábralo en su navegador.</p>
+
+		<code>
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;meta charset="utf-8"&gt;
+				&lt;title&gt;Mi primera aplicación con three.js&lt;/title&gt;
+				&lt;style&gt;
+					body { margin: 0; }
+				&lt;/style&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;script src="js/three.js"&gt;&lt;/script&gt;
+				&lt;script&gt;
+					// El código Javascript va aquí.
+				&lt;/script&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+		</code>
+
+		<p>Eso es todo. A continuación se enseñará un código que deberá colocarse dentro de la etiqueta &lt;script&gt;.</p>
+
+		<h2>Creando una escena</h2>
+
+		<p>Para poder mostrar cualquier cosa con three.js, necesitamos tres cosas: escena, cámara y renderizador, para que podamos renderizar la escena con la cámara.</p>
+
+		<code>
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
+		</code>
+
+		<p>Tomemos un momento para explicar lo que está pasando aquí. Ahora hemos configurado la escena, nuestra cámara y el renderizador.</p>
+
+		<p>Hay algunas cámaras diferentes en three.js. Por ahora, usemos una `PerspectiveCamera`.</p>
+
+		<p>El primer atributo es el `field of view` (campo de visión en español). FOV es la extensión de la escena que se ve en la pantalla en un momento dado. El valor está en grados.</p>
+
+		<p>El segundo es la `aspect ratio` (relación de aspecto en español). Casi siempre deseará usar el ancho del elemento dividido por la altura, de otra manera obtendrá el mismo resultado que cuando reproduce películas antiguas en un televisor de pantalla panorámica: la imagen se vería aplastada.</p>
+
+		<p>Los siguientes dos atributos son el plano de recorte cercano `near` y lejano `far`. Lo que eso significa es que los objetos más alejados de la cámara que el valor de `far` o más cerca que `near` no se renderizarán. No tiene que preocuparse por esto ahora, pero es posible que desee utilizar otros valores en sus aplicaciones para obtener un mejor rendimiento.</p>
+
+		<p>El siguiente es el renderizador `renderer`. Aquí es donde ocurre la magia. Además del WebGLRenderer que usamos aquí, three.js viene con algunos otros, que a menudo se usan como respaldo para usuarios con navegadores más antiguos o para aquellos que no tienen soporte para WebGL por alguna razón.</p>
+
+		<p>Además de crear la instancia del renderizador, también debemos establecer el tamaño en el que queremos que renderice nuestra aplicación. Es una buena idea usar el ancho y el alto del área que queremos llenar con nuestra aplicación; en este caso, el ancho y el alto de la ventana del navegador. Para aplicaciones intensivas en rendimiento, también puede dar valores más pequeños a `setSize`, como `window.innerWidth/2` y `window.innerHeight/2`, lo que hará que la aplicación se represente en una cuarta parte del tamaño.</p>
+
+		<p>Si desea mantener el tamaño de su aplicación pero presentarla a una resolución más baja, puede hacerlo llamando a`setSize` con el tercer argumento `updateStyle` como falso. For example, `setSize(window.innerWidth/2, window.innerHeight/2, false)` mostrará su aplicación a la mitad de resolución, dado que su  &lt;canvas&gt; tiene 100 % de ancho y alto.</p>
+
+		<p>Por último, pero no menos importante, agregamos el elemento renderizador `renderer` a nuestro documento HTML. Este es un elemento &lt;canvas&gt; que usa el renderizador para mostrarnos la escena.</p>
+
+		<p><em>"Todo eso está bien, pero ¿dónde está ese cubo que prometiste?"</em> Vamos a agregarlo ahora.</p>
+
+		<code>
+		const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+		const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+		const cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+
+		camera.position.z = 5;
+		</code>
+
+		<p>Para crear un cubo, necesitamos una `BoxGeometry`.Este es un objeto que contiene todos los puntos (`vertices`) y caras (`faces`) del cubo. Exploraremos esto más en el futuro.</p>
+
+		<p>Además de la geometría, necesitamos un material para colorearla. Three.js viene con varios materiales, pero por ahora nos limitaremos al `MeshBasicMaterial`. Todos los materiales toman de un objeto las propiedades que se les aplicará. Para mantener las cosas muy simples, sólo proporcionamos un atributo de color de `0x00ff00`, que es verde. Esto funciona de la misma manera que los colores funcionan en CSS o Photoshop (`hex colors`).</p>
+
+		<p>Lo tercero que necesitamos es una malla `Mesh`. Una malla es un objeto que toma una geometría y le aplica un material, que luego podemos insertar en nuestra escena y movernos libremente.</p>
+
+		<p>Por defecto, cuando llamamos `scene.add()`, lo que agreguemos se agregará a las coordenadas `(0,0,0)`. Esto haría que tanto la cámara como el cubo estén uno dentro del otro. Para evitar esto, simplemente movemos la cámara un poco hacia afuera. Hacia atrás en el eje z.</p>
+
+		<h2>Renderizando la escena</h2>
+
+		<p>Si copió el código de arriba en el archivo HTML que creamos anteriormente, no podrá ver nada. Esto se debe a que en realidad no estamos renderizando nada todavía. Para eso, necesitamos lo que se llama un `bucle de renderizado` o `bucle de animacion`.</p>
+
+		<code>
+		function animate() {
+			requestAnimationFrame( animate );
+			renderer.render( scene, camera );
+		}
+		animate();
+		</code>
+
+		<p>Esto creará un bucle que hará que el renderizador dibuje la escena cada vez que se actualice la pantalla (en una pantalla típica, esto significa 60 veces por segundo). Si eres nuevo en escribiendo javascript el navegador, podrías decir <em>"¿Por qué no creamos simplemente un setInterval?"</em> La cuestión es que podríamos, pero `requestAnimationFrame` tiene una serie de ventajas. Quizás el más importante es que se detiene cuando el usuario navega a otra pestaña del navegador, por lo tanto, no desperdicia su preciado poder de procesamiento y la duración de la batería.</p>
+
+		<h2>Animando el cubo</h2>
+
+		<p>Si inserta todo el código anterior en el archivo que creó al principio de este tutorial, debería ver un cuadro verde. Hagamos que todo sea un poco más interesante girándolo.</p>
+
+		<p>Agregue el siguiente código justo antes de la llamada `renderer.render` en su función de `animate`:</p>
+
+		<code>
+		cube.rotation.x += 0.01;
+		cube.rotation.y += 0.01;
+		</code>
+
+		<p>Esto se ejecutará en cada cuadro (normalmente 60 veces por segundo) y le dará al cubo una buena animación de rotación. Básicamente, cualquier cosa que desee mover o cambiar mientras la aplicación se está ejecutando debe pasar por el bucle animado. Por supuesto, puede llamar a otras funciones desde allí, para no terminar con una función `animate` que tenga cientos de líneas.</p>
+
+		<h2>El resultado</h2>
+		<p>¡Felicidades! Ahora ha completado su primera aplicación three.js. Es simple, pero hay que empezar por alguna parte.</p>
+
+		<p>El código completo está disponible a en este [link:https://jsfiddle.net/fxurzeb4/ ejemplo]. Juega con él para comprender mejor cómo funciona.</p>
+
+		<code>
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;meta charset="utf-8"&gt;
+				&lt;title&gt;My first three.js app&lt;/title&gt;
+				&lt;style&gt;
+					body { margin: 0; }
+				&lt;/style&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;script src="js/three.js"&gt;&lt;/script&gt;
+				&lt;script&gt;
+					const scene = new THREE.Scene();
+					const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+					const renderer = new THREE.WebGLRenderer();
+					renderer.setSize( window.innerWidth, window.innerHeight );
+					document.body.appendChild( renderer.domElement );
+
+					const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+					const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+					const cube = new THREE.Mesh( geometry, material );
+					scene.add( cube );
+
+					camera.position.z = 5;
+
+					function animate() {
+						requestAnimationFrame( animate );
+
+						cube.rotation.x += 0.01;
+						cube.rotation.y += 0.01;
+
+						renderer.render( scene, camera );
+					};
+
+					animate();
+				&lt;/script&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+		</code>
+	</body>
+</html>
