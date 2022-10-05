@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+
+	<p>
+		Un aspecto importante para mejorar el rendimiento y evitar pérdidas de memoria en su aplicación es la eliminación de entidades de biblioteca no utilizadas. Cada vez que crea una instancia de un tipo *three.js*, asigna una determinada cantidad de memoria. Sin embargo, *three.js* crea para objetos específicos como geometrías o materiales entidades relacionadas con WebGL como búferes o programas de sombreado que son necesarios para la representación. Es importante resaltar que estos objetos no se liberan automáticamente. En cambio, la aplicación tiene que usar una API especial para liberar dichos recursos. Esta guía proporciona una breve descripción general sobre cómo se usa esta API y qué objetos son relevantes en este contexto.
+	</p>
+
+	<h2>Geometrías</h2>
+
+	<p>
+		Una geometría generalmente representa información de vértice definida como una colección de atributos. *three.js* crea internamente un objeto de tipo [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer WebGLBuffer]
+		para cada atributo. Estas entidades solo se eliminan si llama a [page:BufferGeometry.dispose](). Si una geometría se vuelve obsoleta en su aplicación, ejecute el método para liberar todos los recursos relacionados.
+	</p>
+
+	<h2>Materiales</h2>
+
+	<p>
+		Un material define cómo se renderizan los objetos. *three.js* utiliza la información de una definición de material para construir un shader para el renderizado.
+		Los shaders solo se pueden eliminar si se desecha el material correspondiente. Por motivos de rendimiento, *three.js* intenta reutilizar los programas de sombreado existentes si es posible. Por lo tanto, un programa de sombreado solo se elimina si se desechan todos los materiales relacionados. Puede indicar la eliminación de un material ejecutando [page:Material.dispose]().
+	</p>
+
+	<h2>Texturas</h2>
+
+	<p>
+		La eliminación de un material no tiene efecto sobre las texturas. Se manejan por separado ya que una sola textura puede ser utilizada por múltiples materiales al mismo tiempo.
+		Cada vez que crea una instancia de [page:Texture], three.js crea internamente una instancia de [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture WebGLTexture].
+		Al igual que los búferes, este objeto solo se puede eliminar llamando a [page:Texture.dispose]().
+	</p>
+
+	<p>
+		Si usa un `ImageBitmap` como fuente de datos de la textura, debe llamar a [link:https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap/close ImageBitmap.close]() en el nivel de la aplicación para disponer de todos los recursos del lado de la CPU.
+		Una llamada automática de `ImageBitmap.close()` en [page:Texture.dispose]() no es posible, ya que el mapa de bits de la imagen se vuelve inutilizable y el motor no tiene forma de saber si el mapa de bits de la imagen se usa en otro lugar.
+	</p>
+
+	<h2>Render Targets</h2>
+
+	<p>
+		Los objetos de [page:WebGLRenderTarget] no solo asignan una instancia de [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLTexture WebGLTexture] sino también [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer WebGLFramebuffer]s y [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderbuffer WebGLRenderbuffer]s
+		para realizar destinos de rendering personalizados. Estos objetos solo se desasignan ejecutando [page:WebGLRenderTarget.dispose]().
+	</p>
+
+	<h2>Misceláneas</h2>
+
+	<p>
+		Hay otras clases del directorio de ejemplos, como controles o pases de posprocesamiento, que proporcionan métodos `dispose()` para eliminar detectores de eventos internos o representar objetivos. En general, se recomienda consultar la API o la documentación de una clase y buscar `dispose()`. Si está presente, debe usarlo al limpiar las cosas.
+	</p>
+
+	<h2>Preguntas frecuentes</h2>
+
+	<h3>¿Por qué *three.js* no puede eliminar objetos automáticamente?</h3>
+
+	<p>
+		Esta pregunta la hizo la comunidad muchas veces, por lo que es importante aclarar este asunto. El hecho es que *three.js* no conoce la vida útil o el alcance de las entidades creadas por el usuario, como geometrías o materiales. Esto es responsabilidad de la aplicación. Por ejemplo, incluso si un material no se usa actualmente para renderizar, podría ser necesario para el siguiente cuadro. Entonces, si la aplicación decide que se puede eliminar un determinado objeto, debe notificar al motor llamando al método `dispose()` respectivo.
+	</p>
+
+	<h3>¿Eliminar una malla de la escena también elimina su geometría y material?</h3>
+
+	<p>
+		No, debe desechar explícitamente la geometría y el material a través de *dispose()*. Tenga en cuenta que las geometrías y los materiales se pueden compartir entre objetos 3D como mallas.
+	</p>
+
+	<h3>¿*Three.js* proporciona información sobre la cantidad de objetos almacenados en caché?</h3>
+
+	<p>
+		Sí. Es posible evaluar [page:WebGLRenderer.info],una propiedad especial del renderizador con una serie de información estadística sobre la memoria de la tarjeta gráfica y el proceso de renderizado. Entre otras cosas, te dice cuántas texturas, geometrías y programas de sombreado están almacenados internamente. Si nota problemas de rendimiento en su aplicación, es una buena idea depurar esta propiedad para identificar fácilmente una pérdida de memoria.
+	</p>
+
+	<h3>¿Qué sucede cuando llamas a `dispose()` en una textura pero la imagen aún no está cargada?</h3>
+
+	<p>
+		Los recursos internos para una textura solo se asignan si la imagen se ha cargado por completo. Si desecha una textura antes de cargar la imagen, no pasa nada. No se asignaron recursos, por lo que tampoco hay necesidad de limpieza.
+	</p>
+
+	<h3>¿Qué sucede cuando llamo a `dispose()` y luego uso el objeto respectivo en un momento posterior?</h3>
+
+	<p>
+		El motor volverá a crear los recursos internos eliminados. Por lo tanto, no se producirá ningún error de tiempo de ejecución, pero es posible que observe un impacto negativo en el rendimiento del frame actual, especialmente cuando se deben compilar shader.
+	</p>
+
+	<h3>¿Cómo debo administrar los objetos three.js en mi aplicación? ¿Cuándo sé cómo desechar las cosas?</h3>
+
+	<p>
+		En general, no hay una recomendación definitiva para esto. Depende en gran medida del caso de uso específico cuando llamar a `dispose()` es apropiado. Es importante resaltar que no siempre es necesario desechar objetos todo el tiempo. Un buen ejemplo de esto es un juego que consta de varios niveles. Un buen lugar para desechar objetos es al cambiar de nivel. La aplicación podría atravesar la escena antigua y eliminar todos los materiales, geometrías y texturas obsoletas. Como se mencionó en la sección anterior, no produce un error de tiempo de ejecución si desecha un objeto que todavía está en uso. Lo peor que puede pasar es la caída del rendimiento de un solo frame.
+	</p>
+
+	<h2>Ejemplos que demuestran el uso de dispose()</h2>
+
+	<p>
+		[example:webgl_test_memory WebGL / test / memory]<br />
+		[example:webgl_test_memory2 WebGL / test / memory2]<br />
+	</p>
+
+</body>
+
+</html>
