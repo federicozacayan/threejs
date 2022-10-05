@@ -7,14 +7,14 @@
 		<link type="text/css" rel="stylesheet" href="page.css" />
 	</head>
 	<body>
-		<h1>[name]</h1>
+		<h1>Dibujando Líneas</h1>
 		<div>
 			<p>
-				Let's say you want to draw a line or a circle, not a wireframe [page:Mesh].
-				First we need to set up the [page:WebGLRenderer renderer], [page:Scene scene] and camera (see the Creating a scene page).
+				Digamos que desea dibujar una línea o un círculo, no una estructura alámbrica [page:Mesh].
+				Primero tenemos que configurar el [page:WebGLRenderer renderer], [page:Scene scene] y la cámara (ver la página Creando una escena ).
 			</p>
 
-			<p>Here is the code that we will use:</p>
+			<p>Aquí está el código que usaremos:</p>
 			<code>
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -26,14 +26,14 @@ camera.lookAt( 0, 0, 0 );
 
 const scene = new THREE.Scene();
 			</code>
-			<p>Next thing we will do is define a material. For lines we have to use [page:LineBasicMaterial] or [page:LineDashedMaterial].</p>
+			<p>Lo siguiente que haremos será definir un material. Para las líneas tenemos que usar [page:LineBasicMaterial] o [page:LineDashedMaterial].</p>
 			<code>
-//create a blue LineBasicMaterial
+//crear una LineBasicMaterial azul
 const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
 			</code>
 
 			<p>
-				After material we will need a geometry with some vertices:
+				Después del material necesitaremos una geometría con algunos vértices:
 			</p>
 
 			<code>
@@ -45,20 +45,20 @@ points.push( new THREE.Vector3( 10, 0, 0 ) );
 const geometry = new THREE.BufferGeometry().setFromPoints( points );
 			</code>
 
-			<p>Note that lines are drawn between each consecutive pair of vertices, but not between the first and last (the line is not closed.)</p>
+			<p>Tenga en cuenta que las líneas se dibujan entre cada par de vértices consecutivos, pero no entre el primero y el último (la línea no está cerrada).</p>
 
-			<p>Now that we have points for two lines and a material, we can put them together to form a line.</p>
+			<p>Ahora que tenemos puntos para dos líneas y un material, podemos utilizarlos para formar una línea.</p>
 			<code>
 const line = new THREE.Line( geometry, material );
 			</code>
-			<p>All that's left is to add it to the scene and call [page:WebGLRenderer.render render].</p>
+			<p>Todo lo que queda es agregarlo a la escena y llamar al [page:WebGLRenderer.render render].</p>
 
 			<code>
 scene.add( line );
 renderer.render( scene, camera );
 			</code>
 
-			<p>You should now be seeing an arrow pointing upwards, made from two blue lines.</p>
+			<p>Ahora debería ver una flecha que apunta hacia arriba, formada por dos líneas azules.</p>
 		</div>
 	</body>
 </html>
