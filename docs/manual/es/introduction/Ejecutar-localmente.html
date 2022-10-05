@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<base href="../../../" />
+		<script src="page.js"></script>
+		<link type="text/css" rel="stylesheet" href="page.css" />
+	</head>
+	<body>
+		<h1>[name]</h1>
+		<p>
+			Si usa solo geometrías de procedimiento y no carga ninguna textura, las páginas web deberían funcionar directamente desde el sistema de archivos, simplemente haga doble clic en el archivo HTML en un administrador de archivos y debería aparecer funcionando en el navegador. (Verás <em>file:///tuArchivo.html</em> en la barra de direcciones).
+		</p>
+
+		<h2>Contenido cargado desde archivos externos</h2>
+		<div>
+			<p>
+				Si carga modelos o texturas desde archivos externos, debido a los navegadores [link:http://en.wikipedia.org/wiki/Same_origin_policy same origin policy]
+				restricciones de seguridad, la carga desde un sistema de archivos fallará con una excepción de seguridad.
+		 	</p>
+
+			<p>
+				Para resolver esto, ejecute archivos desde un servidor web local. Esto le permite acceder a su página como:
+			</p>
+			
+			<p>
+				<code>http://localhost/tuArchivo.html</code>
+			</p>
+
+			<p>
+				Si bien también es posible cambiar la configuración de seguridad del navegador en lugar de ejecutar un servidor local, no recomendamos ese enfoque. Si lo hace, puede abrir su dispositivo a vulnerabilidades, si se utiliza el mismo navegador para navegar por Internet con regularidad. El uso de un servidor local es una práctica estándar en el desarrollo web, y a continuación explicamos cómo instalar y usar un servidor local.
+			</p>
+		</div>
+
+
+		<h2>Ejecutar un servidor local</h2>
+		<div>
+			<p>
+				Muchos lenguajes de programación tienen servidores HTTP simples incorporados. No tienen tantas funciones como los servidores de producción como [link:https://www.apache.org/ Apache] o [link:https://nginx.org NGINX], sin embargo, deberían ser suficientes para probar su aplicación three.js.
+			</p>
+
+			<h3>Complementos para editores de código populares</h3>
+			<div>
+				<p>Algunos editores de código tienen complementos que generarán un servidor simple a pedido.</p>
+				<ul>
+					<li>[link:https://marketplace.visualstudio.com/items?itemName=yandeu.five-server Five Server] para Visual Studio Code.</li>
+					<li>[link:https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer Live Server] para Visual Studio Code.</li>
+					<li>[link:https://atom.io/packages/atom-live-server Live Server] para Atom.</li>
+				</ul>
+			</div>
+
+			<h3>Servez</h3>
+			<div>
+				<p>
+					[link:https://greggman.github.io/servez Servez] es un servidor simple con una GUI.
+				</p>
+			</div>
+
+			<h3>Node.js five-server</h3>
+			<div>
+				<p>Servidor de desarrollo con capacidad de recarga en vivo. Instalar:</p>
+				<code>
+# Quitar live-server (si lo tenías)
+npm -g rm live-server
+
+# Install five-server
+npm -g i five-server
+
+# Actualizar five-server (de vez en cuando)
+npm -g i five-server@latest
+				</code>
+
+				<p>Para ejecutar (desde la carpeta actual):</p>
+				<code>five-server . -p 8000</code>
+			</div>
+
+			<h3>Node.js http-server</h3>
+			<div>
+				<p>Node.js tiene un paquete de servidor HTTP simple. Para instalar:</p>
+				<code>npm install http-server -g</code>
+
+				<p>Para ejecutar (desde la carpeta actual):</p>
+				<code>http-server . -p 8000</code>
+			</div>
+
+			<h3>Servidor con Python</h3>
+			<div>
+				<p>
+					Si tienes [link:http://python.org/ Python] instalado, debería ser suficiente ejecutar esto desde una línea de comando (desde la carpeta actual):
+				</p>
+				<code>
+//Python 2.x
+python -m SimpleHTTPServer
+
+//Python 3.x
+python -m http.server
+				</code>
+
+				<p>Esto servirá archivos del directorio actual en localhost bajo el puerto 8000, es decir, en la barra de direcciones escriba:</p>
+
+				<code>http://localhost:8000/</code>
+			</div>
+
+			<h3>Servidor con Ruby</h3>
+			<div>
+				<p>Si tiene instalado Ruby, puede obtener el mismo resultado ejecutando esto en su lugar:</p>
+				<code>
+ruby -r webrick -e "s = WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start"
+				</code>
+			</div>
+
+			<h3>Servidor con PHP</h3>
+			<div>
+				<p>PHP también tiene un servidor web incorporado, desde la versión php 5.4.0:</p>
+				<code>php -S localhost:8000</code>
+			</div>
+
+			<h3>Lighttpd</h3>
+			<div>
+				<p>
+					Lighttpd es un servidor web de uso general muy ligero. Cubriremos la instalación en OSX con HomeBrew aquí. A diferencia de los otros servidores discutidos aquí, lighttpd es un servidor completo listo para producción.
+				</p>
+
+				<ol>
+					<li>
+						Instalarlo a través de homebrew
+						<code>brew install lighttpd</code>
+					</li>
+					<li>
+						Cree un archivo de configuración llamado lighttpd.conf en el directorio donde desea ejecutar su servidor web. Hay una demo [link:http://redmine.lighttpd.net/projects/lighttpd/wiki/TutorialConfiguration aqui].
+					 </li>
+					<li>
+						En el archivo conf, cambie server.document-root al directorio desde el que desea entregar los archivos.
+					</li>
+					<li>
+						Comenzar con
+						<code>lighttpd -f lighttpd.conf</code>
+					</li>
+					<li>
+						Navegue a http://localhost:3000/ y servirá archivos estáticos desde el directorio que elija.
+					</li>
+				</ol>
+			</div>
+			<h3>IIS</h3>
+			<div>
+				<p>Si está utilizando Microsoft IIS como servidor web. Agregue una configuración de tipo MIME con respecto a la extensión .fbx antes de cargar.</p>
+				<code>File name extension: fbx        MIME Type: text/plain</code>
+				<p>De forma predeterminada, IIS bloquea las descargas de archivos .fbx y .obj. Debe configurar IIS para permitir que este tipo de archivos se puedan descargar.</p>
+			</div>
+			<p>
+				Otras alternativas simples son [link:http://stackoverflow.com/q/12905426/24874 tratadas aqui] en  Stack Overflow.
+			</p>
+		</div>
+
+	</body>
+</html>
