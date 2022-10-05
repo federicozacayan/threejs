@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<h1>[name]</h1>
+	<h1>Cómo deshacerse de los objetos</h1>
 
 	<p>
 		Un aspecto importante para mejorar el rendimiento y evitar pérdidas de memoria en su aplicación es la eliminación de entidades de biblioteca no utilizadas. Cada vez que crea una instancia de un tipo *three.js*, asigna una determinada cantidad de memoria. Sin embargo, *three.js* crea para objetos específicos como geometrías o materiales entidades relacionadas con WebGL como búferes o programas de sombreado que son necesarios para la representación. Es importante resaltar que estos objetos no se liberan automáticamente. En cambio, la aplicación tiene que usar una API especial para liberar dichos recursos. Esta guía proporciona una breve descripción general sobre cómo se usa esta API y qué objetos son relevantes en este contexto.
