@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<base href="../../../" />
+		<script src="page.js"></script>
+		<link type="text/css" rel="stylesheet" href="page.css" />
+	</head>
+	<body>
+		<h1>Sistema de animación</h1>
+
+		<h2>Visión general</h2>
+
+		<p class="desc">
+			Dentro del sistema de animación three.js puedes animar varias propiedades de tus modelos:
+			los huesos de un [page:SkinnedMesh skinned and rigged model], morph objetivos, diferentes propiedades materiales
+			(colors, opacity, booleans), visibility y transformaciones. Las propiedades animadas se pueden desvanecer (faded in,
+			faded out, crossfaded y warped). Las escalas de peso y tiempo de diferentes animaciones simultáneas en el mismo objeto, 
+			así como en diferentes objetos, se pueden cambiar de forma independiente. 
+			Se pueden sincronizar varias animaciones en el mismo y en diferentes objetos.<br /><br />
+
+			Para lograr todo esto en un sistema homogéneo, el sistema de animación de three.js
+			[link:https://github.com/mrdoob/three.js/issues/6881 ha cambiado completamente en 2015]
+			(¡cuidado con la información desactualizada!), y ahora tiene una arquitectura similar a Unity/Unreal Engine 4. Esta página brinda una breve descripción general de los componentes principales del sistema y cómo funcionan juntos.
+
+		</p>
+
+		<h3>Animation Clips</h3>
+
+		<p class="desc">
+
+			Si ha importado con éxito un objeto 3D animado (no importa si tiene huesos o objetivos metamorfoseados o ambos), por ejemplo, exportándolo desde Blender con el
+			[link:https://github.com/KhronosGroup/glTF-Blender-IO glTF Blender exporter] y cargándolo en una escena three.js usando [page:GLTFLoader] — uno de los campos de 
+			respuesta debe ser una matriz llamada "animations", que contenga el [page:AnimationClip AnimationClips] para este modelo (ver una lista de posibles cargadores a continuación).<br /><br />
+
+			Cada `AnimationClip` generalmente contiene los datos para una determinada actividad del objeto. Si la malla es un personaje, 
+			por ejemplo, puede haber un AnimationClip para un ciclo de caminata, un segundo para un salto, un tercero para esquivar, etc.
+
+		</p>
+
+		<h3>Keyframe Tracks</h3>
+
+		<p class="desc">
+			Dentro de dicho `AnimationClip`, los datos de cada propiedad animada se almacenan en un
+			separar [page:KeyframeTrack]. Suponiendo que un objeto de un personaje tiene un [page:Skeleton skeleton],
+			una pista de fotogramas clave podría almacenar los datos para los cambios de posición del hueso del antebrazo
+			con el tiempo, un seguimiento diferente de los datos de los cambios de rotación del mismo hueso, un tercero
+			la posición de la pista, la rotación o descamación de otro hueso, etc. debe quedar claro,
+			que un AnimationClip puede estar compuesto por muchas de esas pistas.<br /><br />
+
+			Suponiendo que el modelo tiene objetivos de morph (por ejemplo, un objetivo de morph que muestra una cara 
+			amigable y otro que muestra una cara de enojo), cada pista contiene la información sobre 
+			cómo la [page:Mesh.morphTargetInfluences influence] de un determinado objetivo de morph cambia 
+			durante la actuación del clip.
+
+		</p>
+
+		<h3>Animation Mixer</h3>
+
+		<p class="desc">
+
+			Los datos almacenados forman solo la base de las animaciones: la reproducción real está controlada por
+			la [page:AnimationMixer]. Puedes imaginar esto no solo como un reproductor de animaciones, sino
+			como una simulación de un hardware como una consola mezcladora real, que puede controlar varias animaciones
+			simultáneamente, mezclándolos y fusionándolos.
+
+		</p>
+
+		<h3>Animation Actions</h3>
+
+		<p class="desc">
+
+			El `AnimationMixer` tiene muy pocas propiedades y métodos (generales), porque puede ser controlado 
+			por [page:AnimationAction AnimationActions]. Al configurar una [page:AnimationAction AnimationActions], puede determinar cuándo se reproducirá, pausará o detendrá un determinado `AnimationClip` en uno de los mezcladores, si se debe repetir el clip y con qué frecuencia, si se realizará con un desvanecimiento o un tiempo. escalado y algunas cosas adicionales, como crossfading o sincronización.
+
+		</p>
+
+		<h3>Animation Object Groups</h3>
+
+		<p class="desc">
+
+			Si desea que un grupo de objetos reciba un estado de animación compartido, puede usar un [page:AnimationObjectGroup].
+
+		</p>
+
+		<h3>Formatos soportados y Loaders</h3>
+
+		<p class="desc">
+			Tenga en cuenta que no todos los formatos de modelo incluyen animación (en particular, OBJ no la incluye) y que solo algunos loaders de three.js admiten secuencias [page:AnimationClip AnimationClip]. Varios que <i>sí</i> admiten este tipo de animación:
+		</p>
+
+			<ul>
+				<li>[page:ObjectLoader THREE.ObjectLoader]</li>
+				<li>THREE.BVHLoader</li>
+				<li>THREE.ColladaLoader</li>
+				<li>THREE.FBXLoader</li>
+				<li>[page:GLTFLoader THREE.GLTFLoader]</li>
+				<li>THREE.MMDLoader</li>
+			</ul>
+
+		<p class="desc">
+			Tenga en cuenta que 3D max y Maya actualmente no pueden exportar varias animaciones (es decir, animaciones que no están en la misma línea de tiempo) directamente a un solo archivo.
+		</p>
+
+		<h2>Ejemplo</h2>
+
+		<code>
+		let mesh;
+
+		// Cree un AnimationMixer y obtenga la lista de instancias de AnimationClip
+		const mixer = new THREE.AnimationMixer( mesh );
+		const clips = mesh.animations;
+
+		// Actualiza el mezclador en cada cuadro.
+		function update () {
+			mixer.update( deltaSeconds );
+		}
+
+		// Reproducir una animación específica
+		const clip = THREE.AnimationClip.findByName( clips, 'dance' );
+		const action = mixer.clipAction( clip );
+		action.play();
+
+		// Reproducir todas las animaciones
+		clips.forEach( function ( clip ) {
+			mixer.clipAction( clip ).play();
+		} );
+		</code>
+
+	</body>
+</html>
