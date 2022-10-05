@@ -450,11 +450,11 @@
 				"Carga de modelos 3D": "manual/es/introduction/Carga-de-modelos-3D",
 				"Libraries y Plugins": "manual/es/introduction/Libraries-y-Plugins",
 				"Preguntas frecuentes": "manual/es/introduction/Preguntas-frecuentes",
-				"Links Utiles": "manual/es/introduction/Links-Utiles"
+				"Links Útiles": "manual/es/introduction/Links-Utiles"
 			},
 	
-			"Next Steps": {
-				"How to update things": "manual/es/introduction/How-to-update-things",
+			"Próximos Pasos": {
+				"Cómo actualizar cosas": "manual/es/introduction/Como-actualizar-cosas",
 				"How to dispose of objects": "manual/es/introduction/How-to-dispose-of-objects",
 				"How to create VR content": "manual/es/introduction/How-to-create-VR-content",
 				"How to use post-processing": "manual/es/introduction/How-to-use-post-processing",
