@@ -440,7 +440,7 @@
 		
 		"Manual": {
 	
-			"Tutorial": {
+			"Primeros Pasos": {
 				"Creando una escena": "manual/es/introduction/Creando-una-escena",
 				"Instalación": "manual/es/introduction/Instalacion",
 				"Comprobación de compatibilidad con WebGL": "manual/es/introduction/Comprobacion-de-compatibilidad-con-WebGL",
@@ -450,7 +450,7 @@
 				"Carga de modelos 3D": "manual/es/introduction/Carga-de-modelos-3D",
 				"Libraries y Plugins": "manual/es/introduction/Libraries-y-Plugins",
 				"Preguntas frecuentes": "manual/es/introduction/Preguntas-frecuentes",
-				"Useful links": "manual/es/introduction/Useful-links"
+				"Links Utiles": "manual/es/introduction/Links-Utiles"
 			},
 	
 			"Next Steps": {
