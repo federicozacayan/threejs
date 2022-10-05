@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<base href="../../../" />
+		<script src="page.js"></script>
+		<link type="text/css" rel="stylesheet" href="page.css" />
+	</head>
+	<body>
+		<h1>[name]</h1>
+
+		<p>
+		Three.js usa `matrices` para codificar transformaciones 3D: traslaciones (position), rotaciones y escalas. Cada instancia de Object3D tiene una matriz que almacena la posición, rotación y escala de ese objeto. Esta página describe cómo actualizar la transformación de un objeto.
+		</p>
+
+		<h2>Propiedades de conveniencia y `matrixAutoUpdate`</h2>
+
+		<p>
+			Hay dos formas de actualizar la transformación de un objeto:
+		</p>
+		<ol>
+			<li>
+				Modifique las propiedades `position`, `quaternion` y `scale` del objeto, y deje que three.js vuelva a calcular la matriz del objeto a partir de estas propiedades:
+				<code>
+object.position.copy( start_position );
+object.quaternion.copy( quaternion );
+				</code>
+				De forma predeterminada, la propiedad `matrixAutoUpdate` se establece como verdadera y la matriz se volverá a calcular automáticamente. Si el objeto es estático, o si desea controlar manualmente cuándo ocurre el recálculo, se puede obtener un mejor rendimiento configurando la propiedad como falsa:
+				<code>
+object.matrixAutoUpdate = false;
+				</code>
+				Y después de cambiar cualquier propiedad, actualice manualmente la matriz:
+				<code>
+object.updateMatrix();
+				</code>
+			</li>
+			<li>
+				Modifique la matriz del objeto directamente. La clase [page:Matrix4] tiene varios métodos para modificar la matriz:
+				<code>
+object.matrix.setRotationFromQuaternion( quaternion );
+object.matrix.setPosition( start_position );
+object.matrixAutoUpdate = false;
+				</code>
+				Tenga en cuenta que `matrixAutoUpdate` <em>debe</em> establecerse en `falso` en este caso, y debe asegurarse de <em>no</em> llamar a `updateMatrix`. Llamar a `updateMatrix` eliminará los cambios manuales realizados en la matriz, recalculando la matriz desde `posición`, `escala`, etc.
+			</li>
+		</ol>
+
+		<h2>Matrices de objetos y mundos</h2>
+		<p>
+			La [page:Object3D.matrix matrix] de un objeto almacena la transformación del objeto <em>relativa</em> al [page:Object3D.parent parent] del objeto; para obtener la transformación del objeto en coordenadas <em>world</em>, debe acceder a la [page:Object3D.matrixWorld] del objeto.
+		</p>
+		<p>
+			Cuando cambia la transformación del objeto padre o del hijo, puede solicitar que se actualice [page:Object3D.matrixWorld matrixWorld] del objeto hijo llamando a [page:Object3D.updateMatrixWorld updateMatrixWorld]().
+		</p>
+
+		<h2>Rotation y Quaternion</h2>
+		<p>
+			Three.js proporciona dos formas de representar rotaciones 3D: [page:Euler Euler angles] y [page:Quaternion Quaternions], así como métodos para convertir entre los dos. Los ángulos de Euler están sujetos a un problema llamado "bloqueo de cardán", donde ciertas configuraciones pueden perder un grado de libertad (evitando que el objeto gire sobre un eje). Por esta razón, las rotaciones de objetos <em>siempre</em> se almacenan en el [page:Object3D.quaternion quaternion] del objeto.
+		</p>
+		<p>
+			Las versiones anteriores de la biblioteca incluían una propiedad `useQuaternion` que, cuando se configuraba en falso, hacía que la [page:Object3D.matrix matrix]  del objeto se calculara desde un ángulo de Euler. Esta práctica está en desuso; en su lugar, debe usar el método [page:Object3D.setRotationFromEuler setRotationFromEuler], que actualizará el cuaternión.
+		</p>
+
+	</body>
+</html>
