@@ -440,9 +440,9 @@
 		
 		"Manual": {
 	
-			"Getting Started": {
+			"Tutoriales": {
 				"Creando una escena": "manual/es/introduction/Creando-una-escena",
-				"Installation": "manual/es/introduction/Installation",
+				"Instalación": "manual/es/introduction/Instalacion",
 				"WebGL compatibility check": "manual/es/introduction/WebGL-compatibility-check",
 				"How to run things locally": "manual/es/introduction/How-to-run-things-locally",
 				"Drawing lines": "manual/es/introduction/Drawing-lines",
