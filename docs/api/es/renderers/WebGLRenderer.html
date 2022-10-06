@@ -10,7 +10,7 @@
 		<h1>[name]</h1>
 
 		<p class="desc">
-			The WebGL renderer displays your beautifully crafted scenes using
+			El renderizador WebGL muestra tus escenas bellamente diseñadas usando
 			[link:https://en.wikipedia.org/wiki/WebGL WebGL].
 		</p>
 
@@ -18,80 +18,79 @@
 
 		<h3>[name]( [param:Object parameters] )</h3>
 		<p>
-		[page:Object parameters] - (optional) object with properties defining the renderer's behaviour.
-			The constructor also accepts no parameters at all. In all cases, it will assume sane defaults
-			when parameters are missing. The following are valid parameters:<br /><br />
+		[page:Object parameters] - (opcional) objeto con propiedades que definen el comportamiento del renderizador.
+		El constructor tampoco acepta ningún parámetro. En todos los casos, asumirá valores predeterminados sensatos cuando falten parámetros. Los siguientes son parámetros válidos:<br /><br />
 
-		[page:DOMElement canvas] - A [link:https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas canvas]
-		where the renderer draws its output.
-		This corresponds to the [page:WebGLRenderer.domElement domElement] property below.
-		If not passed in here, a new canvas element will be created.<br />
+		[page:DOMElement canvas] - Un [link:https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas canvas]
+		donde el renderizador dibuja su salida.
+		Esto corresponde a la propiedad [page:WebGLRenderer.domElement domElement] que se detalla a continuación. 
+		Si no se pasa aquí, se creará un nuevo elemento de lienzo.<br />
 
 
-		[page:WebGLRenderingContext context] - This can be used to attach the renderer to an existing
-	  [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext RenderingContext].
-		Default is null.<br />
+		[page:WebGLRenderingContext context] - Esto se puede usar para adjuntar el representador a un
+	    [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext RenderingContext] existente.
+	  	El valor predeterminado es nulo.<br />
 
-		[page:String precision] - Shader precision. Can be `"highp"`, `"mediump"` or `"lowp"`.
-		Defaults to `"highp"` if supported by the device.<br />
+		[page:String precision] - Precisión del Shader. Puede ser `"highp"`, `"mediump"` or `"lowp"`.
+		El valor predeterminado es "highp" si el dispositivo lo admite.<br />
 
-		[page:Boolean alpha] - controls the default clear alpha value. When set to `true`, the value is `0`. Otherwise it's `1`. Default is `false`.<br />
+		[page:Boolean alpha] - controla el valor alfa claro predeterminado. Cuando se establece en `true`, el valor es `0`. De lo contrario, es `1`. El valor predeterminado es `false`.<br />
 
-		[page:Boolean premultipliedAlpha] - whether the renderer will assume that colors have
+		[page:Boolean premultipliedAlpha] - si el renderizador asumirá que los colores tienen
 		[link:https://en.wikipedia.org/wiki/Glossary_of_computer_graphics#Premultiplied_alpha premultiplied alpha].
-		Default is `true`.<br />
+		El valor predeterminado es  `true`.<br />
 
-		[page:Boolean antialias] - whether to perform antialiasing. Default is `false`.<br />
+		[page:Boolean antialias] -si se debe realizar antialiasing. El valor predeterminado es `false`.<br />
 
-		[page:Boolean stencil] - whether the drawing buffer has a
-		[link:https://en.wikipedia.org/wiki/Stencil_buffer stencil buffer] of at least 8 bits.
-		Default is `true`.<br />
+		[page:Boolean stencil] - si el búfer de dibujo tiene un
+		[link:https://en.wikipedia.org/wiki/Stencil_buffer stencil buffer] de al menos 8 bits.
+		El valor predeterminado es `true`.<br />
 
-		[page:Boolean preserveDrawingBuffer] - whether to preserve the buffers until manually cleared
-		or overwritten. Default is `false`.<br />
+		[page:Boolean preserveDrawingBuffer] - si conservar los búferes hasta que se borren manualmente
+		o se sobreescriben. El valor predeterminado es `false`.<br />
 
-		[page:String powerPreference] - Provides a hint to the user agent indicating what configuration
-		of GPU is suitable for this WebGL context. Can be `"high-performance"`, `"low-power"` or `"default"`. Default is `"default"`.
-		See [link:https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.2 WebGL spec] for details.<br />
+		[page:String powerPreference] - Proporciona una pista al agente de usuario que indica qué configuración
+		de GPU es adecuado para este contexto WebGL. Puede ser `"high-performance"`, `"low-power"` or `"default"`. El valor predeterminado es `"default"`.
+		Consultar [link:https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.2 WebGL spec] para más detalles.<br />
 
-		[page:Boolean failIfMajorPerformanceCaveat] - whether the renderer creation will fail upon low performance is detected. Default is `false`.
-		See [link:https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.2 WebGL spec] for details.<br />
+		[page:Boolean failIfMajorPerformanceCaveat] - si se detecta un error en la creación del renderizador en caso de bajo rendimiento. El valor predeterminado es `false`.
+		Consultar [link:https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.2 WebGL spec] para más detalles.<br />
 
-		[page:Boolean depth] - whether the drawing buffer has a
-		[link:https://en.wikipedia.org/wiki/Z-buffering depth buffer] of at least 16 bits.
-		Default is `true`.<br />
+		[page:Boolean depth] - si el búfer de dibujo tiene un
+		[link:https://en.wikipedia.org/wiki/Z-buffering depth buffer] de al menos 16 bits.
+		El valor predeterminado es `true`.<br />
 
-		[page:Boolean logarithmicDepthBuffer] -  whether to use a logarithmic depth buffer. It may
-		be necessary to use this if dealing with huge differences in scale in a single scene. Note that this setting
-		uses gl_FragDepth if available which disables the [link:https://www.khronos.org/opengl/wiki/Early_Fragment_Test Early Fragment Test]
+		[page:Boolean logarithmicDepthBuffer] - si se utiliza un búfer de profundidad logarítmica. Puede
+		será necesario usar esto si se trata de grandes diferencias de escala en una sola escena. Tenga en cuenta que esta configuración
+		usa gl_FragDepth si está disponible, lo que deshabilita el [link:https://www.khronos.org/opengl/wiki/Early_Fragment_Test Early Fragment Test]
 		optimization and can cause a decrease in performance.
-		Default is `false`. See the [example:webgl_camera_logarithmicdepthbuffer camera / logarithmicdepthbuffer] example.
+		El valor predeterminado es `false`. Ver el ejemplo [example:webgl_camera_logarithmicdepthbuffer camera / logarithmicdepthbuffer].
 		</p>
 
-		<h2>Properties</h2>
+		<h2>Propiedades</h2>
 
 		<h3>[property:Boolean autoClear]</h3>
-		<p>Defines whether the renderer should automatically clear its output before rendering a frame.</p>
+		<p>Define si el renderizador debe borrar automáticamente su salida antes de renderizar frame.</p>
 
 
 		<h3>[property:Boolean autoClearColor]</h3>
 		<p>
-			If [page:.autoClear autoClear] is true, defines whether the renderer should clear the color buffer.
-			Default is `true`.
+			Si [page:.autoClear autoClear] es verdadero, define si el renderizador debe borrar el búfer de color.
+			El valor predeterminado es`true`.
 		</p>
 
 
 		<h3>[property:Boolean autoClearDepth]</h3>
 		<p>
-			If [page:.autoClear autoClear] is true, defines whether the renderer should clear the depth buffer.
-			Default is `true`.
+			Si [page:.autoClear autoClear] es verdadero, define si el renderizador debe borrar el búfer de profundidad.
+			El valor predeterminado es `true`.
 		</p>
 
 
 		<h3>[property:Boolean autoClearStencil]</h3>
 		<p>
-			If [page:.autoClear autoClear] is true, defines whether the renderer should clear the stencil buffer.
-			Default is `true`.
+			Si [page:.autoClear autoClear] es verdadero, define si el renderizador debe borrar el búfer de la plantilla.
+			El valor predeterminado es `true`.
 		</p>
 
 		<h3>[property:Object debug]</h3>
@@ -101,53 +100,51 @@
 			for errors during compilation and linkage process. It may be useful to disable this check in production for performance gain.
 			It is strongly recommended to keep these checks enabled during development.
 			If the shader does not compile and link - it will not work and associated material will not render.
-			Default is `true`.
+			El valor predeterminado es `true`.
 		</p>
 
 		<h3>[property:Object capabilities]</h3>
 		<p>
-		An object containing details about the capabilities of the current [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext RenderingContext].<br />
+			Un objeto que contiene detalles sobre las capacidades del actual [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext RenderingContext].<br />
 
-		- [page:Boolean floatFragmentTextures]: whether the context supports the [link:https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_float OES_texture_float] extension.<br />
-		- [page:Boolean floatVertexTextures]: `true` if [page:Boolean floatFragmentTextures] and [page:Boolean vertexTextures] are both true.<br />
-		- [page:Method getMaxAnisotropy](): Returns the maximum available anisotropy.<br />
-		- [page:Method getMaxPrecision](): Returns the maximum available precision for vertex and fragment shaders. <br />
-		- [page:Boolean isWebGL2]: `true` if the context in use is a WebGL2RenderingContext object.<br />
-		- [page:Boolean logarithmicDepthBuffer]: `true` if the [page:parameter logarithmicDepthBuffer] was set to true in the constructor and
-		the context supports the [link:https://developer.mozilla.org/en-US/docs/Web/API/EXT_frag_depth EXT_frag_depth] extension.<br />
-		- [page:Integer maxAttributes]: The value of `gl.MAX_VERTEX_ATTRIBS`.<br />
-		- [page:Integer maxCubemapSize]: The value of `gl.MAX_CUBE_MAP_TEXTURE_SIZE`.
-		Maximum height * width of cube map textures that a shader can use.<br />
-		- [page:Integer maxFragmentUniforms]: The value of `gl.MAX_FRAGMENT_UNIFORM_VECTORS`.
-		  The number of uniforms that can be used by a fragment shader.<br />
-		- [page:Integer maxSamples]: The value of `gl.MAX_SAMPLES`.
-		Maximum number of samples in context of Multisample anti-aliasing (MSAA).<br />
-		- [page:Integer maxTextureSize]: The value of `gl.MAX_TEXTURE_SIZE`.
-		Maximum height * width of a texture that a shader use.<br />
-		- [page:Integer maxTextures]: The value of `gl.MAX_TEXTURE_IMAGE_UNITS`.
-		  The maximum number of textures that can be used by a shader.<br />
-		- [page:Integer maxVaryings]: The value of `gl.MAX_VARYING_VECTORS`.
-		  The number of varying vectors that can used by shaders.<br />
-		- [page:Integer maxVertexTextures]: The value of `gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS`.
-		   The number of textures that can be used in a vertex shader.<br />
-		- [page:Integer maxVertexUniforms]: The value of `gl.MAX_VERTEX_UNIFORM_VECTORS`.
-		   The maximum number of uniforms that can be used in a vertex shader.<br />
-		- [page:String precision]: The shader precision currently being used by the renderer.<br />
-		- [page:Boolean vertexTextures]: `true` if [property:Integer maxVertexTextures] is greater than 0 (i.e. vertex textures can be used).<br />
+		- [page:Boolean floatFragmentTextures]: si el contexto admite la extensión [link:https://developer.mozilla.org/en-US/docs/Web/API/OES_texture_float OES_texture_float]<br />
+		- [page:Boolean floatVertexTextures]: `true` si [page:Boolean floatFragmentTextures] y [page:Boolean vertexTextures] son verdaderos.<br />
+		- [page:Method getMaxAnisotropy](): Devuelve la anisotropía máxima disponible.<br />
+		- [page:Method getMaxPrecision](): Devuelve la máxima precisión disponible para vertex y fragment shaders. <br />
+		- [page:Boolean isWebGL2]: `true` si el contexto en uso es un objeto WebGL2RenderingContext.<br />
+		- [page:Boolean logarithmicDepthBuffer]: `true` si el  [page:parameter logarithmicDepthBuffer] se estableció en verdadero en el constructor y el contexto admite la extensión [link:https://developer.mozilla.org/en-US/docs/Web/API/EXT_frag_depth EXT_frag_depth].<br />
+		- [page:Integer maxAttributes]: El valor de `gl.MAX_VERTEX_ATTRIBS`.<br />
+		- [page:Integer maxCubemapSize]: El valor de `gl.MAX_CUBE_MAP_TEXTURE_SIZE`.
+		Máximo alto * ancho de texturas de mapa de cubo que puede usar un shader.<br />
+		- [page:Integer maxFragmentUniforms]: El valor de `gl.MAX_FRAGMENT_UNIFORM_VECTORS`.
+		El número de uniforms que puede usar un fragment shader.<br />
+		- [page:Integer maxSamples]: El valor de `gl.MAX_SAMPLES`.
+		Número máximo de samples en el contexto del Multisample anti-aliasing (MSAA).<br />
+		- [page:Integer maxTextureSize]: El valor de `gl.MAX_TEXTURE_SIZE`.
+		Máximo alto * ancho de una textura que usa un shader.<br />
+		- [page:Integer maxTextures]: El valor de `gl.MAX_TEXTURE_IMAGE_UNITS`.
+		El número máximo de texturas que puede usar un shader.<br />
+		- [page:Integer maxVaryings]: El valor de `gl.MAX_VARYING_VECTORS`.
+		La cantidad de vectores variables que pueden usar los shaders.<br />
+		- [page:Integer maxVertexTextures]: El valor de `gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS`.
+		La cantidad de texturas que se pueden usar en un vertex shader.<br />
+		- [page:Integer maxVertexUniforms]: El valor de `gl.MAX_VERTEX_UNIFORM_VECTORS`.
+		El número máximo de uniformes que se pueden usar en un vertex shader.<br />
+		- [page:String precision]: TLa precisión del shader que está utilizando actualmente el renderer.<br />
+		- [page:Boolean vertexTextures]: `true` si [property:Integer maxVertexTextures] es mayor a 0 (i.e. se pueden usar vertex textures).<br />
 		</p>
 
 		<h3>[property:Array clippingPlanes]</h3>
 		<p>
-		User-defined clipping planes specified as THREE.Plane objects in world space.
-			These planes apply globally. Points in space whose dot product with the plane is negative are cut away.
-		 Default is [].
+			Planos de recorte definidos por el usuario especificados como THREE.Plane objects en el espacio global.
+			Estos planos se aplican globalmente. Los puntos en el espacio cuyo `producto escalar` con el plano es negativo se cortan.
+		 El valor predeterminado es [].
 		</p>
 
 		<h3>[property:DOMElement domElement]</h3>
 		<p>
-		A [link:https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas canvas] where the renderer draws its output.<br />
-			This is automatically created by the renderer in the constructor (if not provided already);
-			you just need to add it to your page like so:<br />
+			Un [link:https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas canvas] donde el renderer dibuja su salida..<br />
+			Esto lo crea automáticamente el renderizador en el constructor (si aún no se ha proporcionado); solo necesita agregarlo a su página así:<br />
 		<code>
 			document.body.appendChild( renderer.domElement );
 		</code>
@@ -156,8 +153,8 @@
 		<h3>[property:Object extensions]</h3>
 		<p>
 		- [page:Object get]( [param:String extensionName] ):
-		Used to check whether various extensions are supported and returns an object with details of the extension if available.
-		This method can check for the following extensions:<br />
+		Se utiliza para verificar si se admiten varias extensiones y devuelve un objeto con detalles de la extensión, si está disponible.
+		Este método puede verificar las siguientes extensiones:<br />
 
 		<ul>
 			<li>`WEBGL_depth_texture`</li>
@@ -169,12 +166,12 @@
 		</p>
 
 		<h3>[property:number outputEncoding]</h3>
-		<p>Defines the output encoding of the renderer. Default is [page:Textures THREE.LinearEncoding].</p>
-		<p>If a render target has been set using [page:WebGLRenderer.setRenderTarget .setRenderTarget] then renderTarget.texture.encoding will be used instead.</p>
-		<p>See the [page:Textures texture constants] page for details of other formats.</p>
+		<p>Define la codificación de salida del renderizador. El valor predeterminado es [page:Textures THREE.LinearEncoding].</p>
+		<p>Si se ha establecido un destino de renderizado usando [page:WebGLRenderer.setRenderTarget .setRenderTarget] en su lugar se usará renderTarget.texture.encoding.</p>
+		<p>Consultar [page:Textures texture constants] para más detalles de otros formatos.</p>
 
 		<h3>[property:Object info]</h3>
-		<p>An object with a series of statistical information about the graphics board memory and the rendering process. Useful for debugging or just for the sake of curiosity. The object contains the following fields:</p>
+		<p>Un objeto con una serie de información estadística sobre la memoria de la tarjeta gráfica y el proceso de renderizado. Útil para la depuración o simplemente por curiosidad. El objeto contiene los siguientes campos:</p>
 		<p>
 		<ul>
 			<li>memory:
@@ -196,292 +193,288 @@
 			</li>
 		</ul>
 		</p>
-		<p>By default these data are reset at each render call but when having multiple render passes per frame (e.g. when using post processing) it can be preferred to reset with a custom pattern.
-			First, set `autoReset` to `false`.
+		<p>De manera predeterminada, estos datos se restablecen en cada llamada de renderizado, pero cuando se tienen múltiples pases de renderizado por cuadro (por ejemplo, cuando se usa el procesamiento posterior), se puede preferir restablecer con un patrón personalizado.
+			Primero, establezca `autoReset` en `false`.
 		<code>
 		renderer.info.autoReset = false;
 		</code>
-		Call `reset()` whenever you have finished to render a single frame.
+		Llamar `reset()` cada vez que se termine de renderizar cada frame.
 		<code>
 		renderer.info.reset();
 		</code>
 		</p>
 
 		<h3>[property:Boolean localClippingEnabled]</h3>
-		<p>Defines whether the renderer respects object-level clipping planes. Default is `false`.</p>
+		<p>Define si el renderizador respeta los planos de recorte a nivel de objeto. El valor predeterminado es`false`.</p>
 
 		<h3>[property:Boolean physicallyCorrectLights]</h3>
 		<p>
-		Whether to use physically correct lighting mode. Default is `false`.
-		See the [example:webgl_lights_physical lights / physical] example.
+			Ya sea para usar el modo de iluminación físicamente correcto. El valor predeterminado es `false`.
+		Ver el ejemplo [example:webgl_lights_physical lights / physical].
 		</p>
 
 		<h3>[property:Object properties]</h3>
 		<p>
-		Used internally by the renderer to keep track of various sub object properties.
+			Utilizado internamente por el renderizador para realizar un seguimiento de varias propiedades de subobjetos.
 		</p>
 
 		<h3>[property:WebGLRenderLists renderLists]</h3>
 		<p>
-		Used internally to handle ordering of scene object rendering.
+			Se usa internamente para manejar el orden de la representación de objetos de escena.
 		</p>
 
 		<h3>[property:WebGLShadowMap shadowMap]</h3>
 		<p>
-		This contains the reference to the shadow map, if used.<br />
+		Contiene la referencia al mapa de sombras, si se usa.<br />
 		- [page:Boolean enabled]:
-			If set, use shadow maps in the scene. Default is `false`.<br />
+		Si está configurado,  usa shadow maps en la escena. El valor predeterminado es `false`.<br />
 		- [page:Boolean autoUpdate]:
-			Enables automatic updates to the shadows in the scene. Default is `true`.<br />
-			If you do not require dynamic lighting / shadows, you may set this to `false` when the renderer is instantiated.<br />
+		Habilita las actualizaciones automáticas de las sombras en la escena. El valor predeterminado es `true`.<br />
+		Si no necesita iluminación / sombras dinámicas, puede establecer esto en "falso" cuando se crea una instancia del renderizador.<br />
 		- [page:Boolean needsUpdate]:
-			When set to `true`, shadow maps in the scene will be updated in the next `render` call. Default is `false`.<br />
-			If you have disabled automatic updates to shadow maps (`shadowMap.autoUpdate = false`), you will need to set this to `true` and then make a render call to update the shadows in your scene.<br />
+			Cuando se establece en  `true`, shadow maps en la escena se actualizarán en la próxima `render` call. El valor predeterminado es `false`.<br />
+			Si ha deshabilitado las actualizaciones automáticas de los(`shadowMap.autoUpdate = false`), tendrá que configurar esto en `true` y luego haga una render call para actualizar las sombras en su escena.<br />
 		- [page:Integer type]:
-			Defines shadow map type (unfiltered, percentage close filtering, percentage close filtering with bilinear filtering in shader).
-			Options are:
+		Define el tipo de mapa de sombras (sin filtrar, porcentaje de filtrado más cercano, porcentaje de filtrado más cercano con filtrado bilineal en el sombreador). Las opciones son:
 			<ul>
 				<li>THREE.BasicShadowMap</li>
 				<li>THREE.PCFShadowMap (default)</li>
 				<li>THREE.PCFSoftShadowMap</li>
 				<li>THREE.VSMShadowMap</li>
 			</ul>
-			See [page:Renderer Renderer constants] for details.<br />
+			Consulte Constantes del renderizador ([page:Renderer Renderer constants]) para obtener más información.<br />
 		</p>
 
 		<h3>[property:Boolean sortObjects]</h3>
 		<p>
-		Defines whether the renderer should sort objects. Default is `true`.<br /><br />
+			Define si el renderizador debe ordenar los objetos. El valor predeterminado es `true`.<br /><br />
 
-		Note: Sorting is used to attempt to properly render objects that have some degree of transparency.
-		By definition, sorting objects may not work in all cases.  Depending on the needs of application,
-		it may be necessary to turn off sorting and use other methods to deal with transparency
-		rendering e.g. manually determining each object's rendering order.
+			Nota: El ordenamiento se utiliza para intentar renderizar correctamente los objetos que tienen cierto grado de transparencia. Por definición, es posible que el ordenamiento de objetos no funcione en todos los casos. Dependiendo de las necesidades de la aplicación, puede ser necesario desactivar el ordenamiento y usar otros métodos para manejar el renderizado de transparencia. 
+			Por ejemplo, determinando manualmente el orden de renderizado de cada objeto.
 		</p>
 
 		<h3>[property:Object state]</h3>
 		<p>
-		Contains functions for setting various properties of the [page:WebGLRenderer.context] state.
+			Contiene funciones para configurar varias propiedades del estado de el [page:WebGLRenderer.context].
 		</p>
 
 		<h3>[property:Constant toneMapping]</h3>
 		<p>
-		Default is [page:Renderer NoToneMapping]. See the [page:Renderer Renderer constants] for other choices.
+		El valor predeterminado es [page:Renderer NoToneMapping]. Ver las [page:Renderer Renderer constants] para conocer otras opciones.
 		</p>
 
 		<h3>[property:Number toneMappingExposure]</h3>
 		<p>
-		Exposure level of tone mapping. Default is `1`.
+			Nivel de exposición del mapeo de tonos. El valor predeterminado es `1`.
 		</p>
 
 		<h3>[property:WebXRManager xr]</h3>
 		<p>
-		Provides access to the WebXR related [page:WebXRManager interface] of the renderer.
+			Proporciona acceso a la [page:WebXRManager interface] relacionada con WebXR del renderer.
 		</p>
 
-		<h2>Methods</h2>
+		<h2>Métodos</h2>
 
 		<h3>[method:undefined clear]( [param:Boolean color], [param:Boolean depth], [param:Boolean stencil] )</h3>
 		<p>
-		Tells the renderer to clear its color, depth or stencil drawing buffer(s).
-			This method initializes the color buffer to the current clear color value.<br />
-		Arguments default to `true`.
+			Le dice al renderizador que borre su(s) búfer(es) de dibujo de color, profundidad o plantilla. Este método inicializa el búfer de color al valor de color claro actual.
+			Los argumentos por defecto son `true`.
 		</p>
 
 		<h3>[method:undefined clearColor]( )</h3>
-		<p>Clear the color buffer. Equivalent to calling [page:WebGLRenderer.clear .clear]( true, false, false ).</p>
+		<p>Borrar el búfer de color. Equivale a llamar [page:WebGLRenderer.clear .clear]( true, false, false ).</p>
 
 		<h3>[method:undefined clearDepth]( )</h3>
-		<p>Clear the depth buffer. Equivalent to calling [page:WebGLRenderer.clear .clear]( false, true, false ).</p>
+		<p>Borrar el búfer de profundidad. Equivale a llamar [page:WebGLRenderer.clear .clear]( false, true, false ).</p>
 
 		<h3>[method:undefined clearStencil]( )</h3>
-		<p>Clear the stencil buffers. Equivalent to calling [page:WebGLRenderer.clear .clear]( false, false, true ).</p>
+		<p>Borrar los stencil buffers. Equivale a llamar [page:WebGLRenderer.clear .clear]( false, false, true ).</p>
 
 		<h3>[method:undefined compile]( [param:Object3D scene], [param:Camera camera] )</h3>
-		<p>Compiles all materials in the scene with the camera. This is useful to precompile shaders before the first rendering.</p>
+		<p>Recopila todos los materiales de la escena con la cámara. Esto es útil para precompilar shaders antes del primer renderizado.</p>
 
 		<h3>[method:undefined copyFramebufferToTexture]( [param:Vector2 position], [param:FramebufferTexture texture], [param:Number level] )</h3>
-		<p>Copies pixels from the current WebGLFramebuffer into a 2D texture. Enables access to [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/copyTexImage2D WebGLRenderingContext.copyTexImage2D].</p>
+		<p>Copia píxeles del WebGLFramebuffer actual en una textura 2D. Habilita el acceso a [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/copyTexImage2D WebGLRenderingContext.copyTexImage2D].</p>
 
 		<h3>[method:undefined copyTextureToTexture]( [param:Vector2 position], [param:Texture srcTexture], [param:Texture dstTexture], [param:Number level] )</h3>
-		<p>Copies all pixels of a texture to an existing texture starting from the given position. Enables access to [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texSubImage2D WebGLRenderingContext.texSubImage2D].</p>
+		<p>Copia todos los píxeles de una textura a una textura existente a partir de la posición dada. Habilita el acceso a [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texSubImage2D WebGLRenderingContext.texSubImage2D].</p>
 
 		<h3>[method:undefined copyTextureToTexture3D]( [param:Box3 sourceBox], [param:Vector3 position], [param:Texture srcTexture], [param:Texture dstTexture], [param:Number level] )</h3>
-		<p>Copies the pixels of a texture in the bounds '[page:Box3 sourceBox]' in the destination texture starting from the given position. Enables access to [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texSubImage3D WebGL2RenderingContext.texSubImage3D].</p>
+		<p>Copia los píxeles de una textura en los límites '[page:Box3 sourceBox]' in the destination textureen la textura de destino a partir de la posición dada. Habilita el acceso a [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texSubImage3D WebGL2RenderingContext.texSubImage3D].</p>
 
 		<h3>[method:undefined dispose]( )</h3>
 		<p>
-		Frees the GPU-related resources allocated by this instance. Call this method whenever this instance is no longer used in your app.
+			Libera los recursos relacionados con GPU asignados por esta instancia. Llame a este método cada vez que esta instancia ya no se use en su aplicación.
 		</p>
 
 		<h3>[method:undefined forceContextLoss]()</h3>
 		<p>
-		Simulate loss of the WebGL context. This requires support for the
-			[link:https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context WEBGL_lose_context] extensions.
+			Simula la pérdida del contexto. Esto requiere compatibilidad con las extensiones [link:https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context WEBGL_lose_context].
 		</p>
 
 		<h3>[method:undefined forceContextRestore]( )</h3>
 		<p>
-		Simulate restore of the WebGL context. This requires support for the
-			[link:https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context WEBGL_lose_context] extensions.
+			Simula la restauración del contexto WebGL. Esto requiere compatibilidad con las extensiones [link:https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_lose_context WEBGL_lose_context].
 		</p>
 
 		<h3>[method:Float getClearAlpha]()</h3>
-		<p>Returns a [page:Float float] with the current clear alpha. Ranges from 0 to 1.</p>
+		<p>Devuelve un [page:Float float] con el color transparente actual. Va de 0 a 1.</p>
 
 		<h3>[method:Color getClearColor]( [param:Color target] )</h3>
-		<p>Returns a [page:Color THREE.Color] instance with the current clear color.</p>
+		<p>Devuelve una instancia de [page:Color THREE.Color] con el color transparente actual.</p>
 
 		<h3>[method:WebGL2RenderingContext getContext]()</h3>
-		<p>Return the current WebGL context.</p>
+		<p>Devuelve el contexto WebGL actual.</p>
 
 		<h3>[method:WebGLContextAttributes getContextAttributes]()</h3>
-		<p>Returns an object that describes the attributes set on the WebGL context when it was created.</p>
+		<p>Devuelve un objeto que describe los atributos establecidos en el contexto WebGL cuando se creó.</p>
 
 		<h3>[method:Integer getActiveCubeFace]()</h3>
-		<p>Returns the current active cube face.</p>
+		<p>RDevuelve la cara del cubo activo actual.</p>
 
 		<h3>[method:Integer getActiveMipmapLevel]()</h3>
-		<p>Returns the current active mipmap level.</p>
+		<p>Devuelve el nivel de mipmap activo actual.</p>
 
 		<h3>[method:RenderTarget getRenderTarget]()</h3>
-		<p>Returns the current [page:RenderTarget RenderTarget] if there are; returns `null` otherwise.</p>
+		<p>Devuelve el [page:RenderTarget RenderTarget] si lo hay; devuelve `null` en caso contrario..</p>
 
 		<h3>[method:Vector4 getCurrentViewport]( [param:Vector4 target] )</h3>
 		<p>
-		[page:Vector4 target] — the result will be copied into this Vector4.<br /><br />
+		[page:Vector4 target] — el resultado se copiará en este Vector4.<br /><br />
 
-		Returns the current viewport.
+		Devuelve viewport actual.
 		</p>
 
 		<h3>[method:Vector2 getDrawingBufferSize]( [param:Vector2 target] )</h3>
 		<p>
-		[page:Vector2 target] — the result will be copied into this Vector2.<br /><br />
+		[page:Vector2 target] — el resultado se copiará en este Vector2.<br /><br />
 
-		Returns the width and height of the renderer's drawing buffer, in pixels.
+		Devuelve el ancho y el alto del renderer's drawing buffer, en píxeles.
 		</p>
 
 		<h3>[method:number getPixelRatio]()</h3>
-		<p>Returns current device pixel ratio used.</p>
+		<p>Devuelve la proporción del píxeles (pixel ratio) del dispositivo actual utilizada.</p>
 
 		<h3>[method:Vector4 getScissor]( [param:Vector4 target] )</h3>
 		<p>
-		[page:Vector4 target] — the result will be copied into this Vector4.<br /><br />
+		[page:Vector4 target] — el resultado se copiará en este Vector4.<br /><br />
 
-		Returns the scissor region.
+		Devuelve la scissor region.
 		</p>
 
 		<h3>[method:Boolean getScissorTest]()</h3>
-		<p>Returns `true` if scissor test is enabled; returns `false` otherwise.</p>
+		<p>Devuelve `true` si la prueba de tijera (scissor test) está habilitada; devuelve `false` de lo contrario.</p>
 
 		<h3>[method:Vector2 getSize]( [param:Vector2 target] )</h3>
 		<p>
-		[page:Vector2 target] — the result will be copied into this Vector2.<br /><br />
+		[page:Vector2 target] — el resultado se copiará en este Vector2.<br /><br />
 
-		Returns the width and height of the renderer's output canvas, in pixels.
+		Devuelve el ancho y el alto del canvas de la salida del  renderer, en píxeles.
 		</p>
 
 		<h3>[method:Vector4 getViewport]( [param:Vector4 target] )</h3>
 		<p>
-		[page:Vector4 target] — the result will be copied into this Vector4.<br /><br />
+		[page:Vector4 target] — el resultado se copiará en este Vector4.<br /><br />
 
-		Returns the viewport.
+		Devuelve el viewport.
 		</p>
 
 		<h3>[method:undefined initTexture]( [param:Texture texture] )</h3>
-		<p> Initializes the given texture. Useful for preloading a texture rather than waiting until first render (which can cause noticeable lags due to decode and GPU upload overhead).</p>
+		<p> Inicializa la textura dada. Útil para precargar una textura en lugar de esperar hasta el primer renderizado (lo que puede causar retrasos notables debido a la sobrecarga de decodificación y carga de GPU).</p>
 
 		<h3>[method:undefined resetGLState]( )</h3>
-		<p>Reset the GL state to default. Called internally if the WebGL context is lost.</p>
+		<p>Restablecer el estado de GL a su valor predeterminado. Se llama internamente si se pierde el contexto WebGL.</p>
 
 		<h3>[method:undefined readRenderTargetPixels]( [param:WebGLRenderTarget renderTarget], [param:Float x], [param:Float y], [param:Float width], [param:Float height], [param:TypedArray buffer], [param:Integer activeCubeFaceIndex] )</h3>
-		<p>buffer - Uint8Array is the only destination type supported in all cases, other types are renderTarget and platform dependent. See [link:https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.14.12 WebGL spec] for details.</p>
-		<p>Reads the pixel data from the renderTarget into the buffer you pass in. This is a wrapper around [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/readPixels WebGLRenderingContext.readPixels]().</p>
-		<p>See the [example:webgl_interactive_cubes_gpu interactive / cubes / gpu] example.</p>
-		<p>For reading out a [page:WebGLCubeRenderTarget WebGLCubeRenderTarget] use the optional parameter activeCubeFaceIndex to determine which face should be read.</p>
+		<p>buffer - Uint8Array es el único tipo de destino admitido en todos los casos, los demás tipos dependen de renderTarget y de la plataforma. Ver [link:https://www.khronos.org/registry/webgl/specs/latest/1.0/#5.14.12 WebGL spec] para más detalles.</p>
+		<p>
+			Lee los datos de píxeles de renderTarget en el búfer que pasa. Esto es un envoltorio sobre [link:https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/readPixels WebGLRenderingContext.readPixels]().</p>
+		<p>Ver el ejemplo [example:webgl_interactive_cubes_gpu interactive / cubes / gpu].</p>
+		<p>Para leer un [page:WebGLCubeRenderTarget WebGLCubeRenderTarget] use el parámetro opcional activeCubeFaceIndex para determinar qué cara debe leerse.</p>
 
 
 		<h3>[method:undefined render]( [param:Object3D scene], [param:Camera camera] )</h3>
 		<p>
-			Render a [page:Scene scene] or another type of [page:Object3D object] using a [page:Camera camera].<br />
+			Renderiza una [page:Scene scene] u otro tipo de [page:Object3D object] usando una [page:Camera camera].<br />
 
-			The render is done to a previously specified [page:WebGLRenderTarget renderTarget] set by calling [page:WebGLRenderer.setRenderTarget .setRenderTarget] or to the canvas as usual.<br />
+			El renderizado se realiza en un [page:WebGLRenderTarget renderTarget] previamente especificado llamando a [page:WebGLRenderer.setRenderTarget .setRenderTarget] o al canvas como de costumbre.<br />
 
-			By default render buffers are cleared before rendering but you can prevent this by setting the property [page:WebGLRenderer.autoClear autoClear] to false.
-			If you want to prevent only certain buffers being cleared you can set either the [page:WebGLRenderer.autoClearColor autoClearColor], [page:WebGLRenderer.autoClearStencil autoClearStencil] or
-			[page:WebGLRenderer.autoClearDepth autoClearDepth] properties to false. To forcibly clear one or more buffers call [page:WebGLRenderer.clear .clear].
+			De forma predeterminada, los búferes de renderización se borran antes de la renderización, pero puede evitarlo configurando la propiedad [page:WebGLRenderer.autoClear autoClear] en false.
+			Si desea evitar que solo se borren ciertos búferes, puede configurar las propiedades [page:WebGLRenderer.autoClearColor autoClearColor], [page:WebGLRenderer.autoClearStencil autoClearStencil] o
+			[page:WebGLRenderer.autoClearDepth autoClearDepth] a falso. Para borrar a la fuerza uno o más búferes, llame a [page:WebGLRenderer.clear .clear].
 		</p>
 
 		<h3>[method:undefined resetState]()</h3>
-		<p>Can be used to reset the internal WebGL state. This method is mostly relevant for applications which share a single WebGL context across multiple WebGL libraries.</p>
+		<p>Se puede utilizar para restablecer el estado WebGL interno. Este método es principalmente relevante para aplicaciones que comparten un único contexto WebGL en varias librerías WebGL.</p>
 
 		<h3>[method:undefined setAnimationLoop]( [param:Function callback] )</h3>
-		<p>[page:Function callback] — The function will be called every available frame. If `null` is passed it will stop any already ongoing animation.</p>
-		<p>A built in function that can be used instead of [link:https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame requestAnimationFrame]. For WebXR projects this function must be used.</p>
+		<p>[page:Function callback] — La función se llamará a cada frame disponible. Si se pasa `null`, se detendrá cualquier animación que ya esté en curso.</p>
+		<p>Una función integrada que se puede usar en lugar de [link:https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame requestAnimationFrame]. Para proyectos WebXR se debe utilizar esta función.</p>
 
 		<h3>[method:undefined setClearAlpha]( [param:Float alpha] )</h3>
-		<p>Sets the clear alpha. Valid input is a float between `0.0` and `1.0`.</p>
+		<p>Establece alpha transparente. La entrada válida es un flotante entre `0.0` y `1.0`.</p>
 
 		<h3>[method:undefined setClearColor]( [param:Color color], [param:Float alpha] )</h3>
-		<p>Sets the clear color and opacity.</p>
+		<p>Establece el `clear color` y la opacidad.</p>
 
 		<h3>[method:undefined setPixelRatio]( [param:number value] )</h3>
-		<p>Sets device pixel ratio. This is usually used for HiDPI device to prevent blurring output canvas.</p>
+		<p>
+			Establece la proporción de píxeles del dispositivo. Esto generalmente se usa para dispositivos HiDPI para evitar que el canvas de salida se vea borroso.
+		</p>
 
 		<h3>[method:undefined setRenderTarget]( [param:WebGLRenderTarget renderTarget], [param:Integer activeCubeFace], [param:Integer activeMipmapLevel] )</h3>
 		<p>
-		renderTarget -- The [page:WebGLRenderTarget renderTarget] that needs to be activated. When `null` is given, the canvas is set as the active render target instead.<br />
-		activeCubeFace -- Specifies the active cube side (PX 0, NX 1, PY 2, NY 3, PZ 4, NZ 5) of [page:WebGLCubeRenderTarget]. When passing a [page:WebGLArrayRenderTarget] or [page:WebGL3DRenderTarget] this indicates the z layer to render in to (optional).<br />
-		activeMipmapLevel -- Specifies the active mipmap level (optional).<br /><br />
-		This method sets the active rendertarget.
+		renderTarget - El [page:WebGLRenderTarget renderTarget] que debe activarse. Cuando se proporciona un valor `null`, the canvas se establece como el destino de representación activo en su lugar.<br />
+		activeCubeFace - Especifica el lado del cubo activo (PX 0, NX 1, PY 2, NY 3, PZ 4, NZ 5) del [page:WebGLCubeRenderTarget]. Al pasar un [page:WebGLArrayRenderTarget] o un [page:WebGL3DRenderTarget] esto indica la capa z en la que se representará (opcional).<br />
+		activeMipmapLevel -Especifica el nivel de mipmap activo (opcional).<br /><br />
+		Este método establece el objetivo de representación activo.
 		</p>
 
 		<h3>[method:undefined setScissor]( [param:Integer x], [param:Integer y], [param:Integer width], [param:Integer height] )<br />
 		[method:undefined setScissor]( [param:Vector4 vector] )</h3>
 
 		<p>
-		The x, y, width, and height parameters of the scissor region.<br />
-		Optionally, a 4-component vector specifying the parameters of the region.<br /><br />
-
-		Sets the scissor region from (x, y) to (x + width, y + height).<br />
-		(x, y) is the lower-left corner of the scissor region.
+			Los parámetros x, y, ancho y alto de la `scissor region`.<br />
+			Opcionalmente, un vector de 4 componentes especificando los parámetros de la región.<br /><br />
+			
+			Establece la `scissor region` de (x, y) a (x + ancho, y + alto).<br />
+			(x, y) es la esquina inferior izquierda de la `scissor region`.
 		</p>
 
 		<h3>[method:undefined setScissorTest]( [param:Boolean boolean] )</h3>
 		<p>
-		Enable or disable the scissor test. When this is enabled, only the pixels within the defined
-			scissor area will be affected by further renderer actions.
+			Activa o desactiva la `scissor test`. Cuando está habilitado, solo los píxeles dentro de la `scissor area` definida se verán afectados por otras acciones del renderizador.
 		</p>
 
 		<h3>[method:undefined setOpaqueSort]( [param:Function method] )</h3>
 		<p>
-		Sets the custom opaque sort function for the WebGLRenderLists. Pass null to use the default painterSortStable function.
+			Establece la función de ordenamiento opaca personalizada para WebGLRenderLists. Pase `null` para usar la función pintorSortStable predeterminada.
 		</p>
 
 		<h3>[method:undefined setTransparentSort]( [param:Function method] )</h3>
 		<p>
-		Sets the custom transparent sort function for the WebGLRenderLists. Pass null to use the default reversePainterSortStable function.
+			Establece la función de ordenamiento transparente personalizada para WebGLRenderLists. Pase `null` para usar la función reversePainterSortStable predeterminada.
 		</p>
 
 		<h3>[method:undefined setSize]( [param:Integer width], [param:Integer height], [param:Boolean updateStyle] )</h3>
 		<p>
-		Resizes the output canvas to (width, height) with device pixel ratio taken into account,
-			and also sets the viewport to fit that size, starting in (0, 0).
-			Setting [page:Boolean updateStyle] to false prevents any style changes to the output canvas.
+			Cambia el tamaño del lienzo de salida a (width, height) teniendo en cuenta el  pixel ratio taken into account
+			y también configura el viewport to fit that sizepara que se ajuste a ese tamaño, comenzando en (0, 0).
+			Establece [page:Boolean updateStyle] en `falso` evita cualquier cambio de estilo en el canvas de salida.
 		</p>
 
 		<h3>[method:undefined setViewport]( [param:Integer x], [param:Integer y], [param:Integer width], [param:Integer height] )<br />
 		[method:undefined setViewport]( [param:Vector4 vector] )</h3>
 
 		<p>
-		The x, y, width, and height parameters of the viewport.<br />
-		Optionally, a 4-component vector specifying the parameters of a viewport.<br /><br />
+			Los parámetros x, y, ancho y alto del viewport.<br />
+			Opcionalmente, un vector de 4 componentes que especifica los parámetros del viewport.<br /><br />
 
-		Sets the viewport to render from (x, y) to (x + width, y + height).<br />
-		(x, y) is the lower-left corner of the region.
+			Establece viewport para renderizar desde (x, y) a (x + width, y + height).<br />
+		(x, y) es la esquina inferior izquierda de la región.
 		</p>
 
-		<h2>Source</h2>
+		<h2>Fuente</h2>
 
 		<p>
 			[link:https://github.com/mrdoob/three.js/blob/master/src/[path].js src/[path].js]
