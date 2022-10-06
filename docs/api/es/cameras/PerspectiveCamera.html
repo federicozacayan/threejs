@@ -12,20 +12,19 @@
 		<h1>[name]</h1>
 
 		<p class="desc">
-			Camera that uses [link:https://en.wikipedia.org/wiki/Perspective_(graphical) perspective projection].<br /><br />
+			Cámara que utiliza [link:https://en.wikipedia.org/wiki/Perspective_(graphical) perspective projection].<br /><br />
 
-			This projection mode is designed to mimic the way the human eye sees. It is the most
-			common projection mode used for rendering a 3D scene.
+			Este modo de proyección está diseñado para imitar la forma en que ve el ojo humano. Es el modo de proyección más común utilizado para renderizar una escena 3D.
 		</p>
 
-		<h2>Code Example</h2>
+		<h2>Ejemplo de código</h2>
 
 		<code>
 		const camera = new THREE.PerspectiveCamera( 45, width / height, 1, 1000 );
 		scene.add( camera );
 		</code>
 
-		<h2>Examples</h2>
+		<h2>Ejemplos</h2>
 
 		<p>
 			[example:webgl_animation_skinning_blending animation / skinning / blending ]<br />
@@ -39,120 +38,114 @@
 
 		<h3>[name]( [param:Number fov], [param:Number aspect], [param:Number near], [param:Number far] )</h3>
 		<p>
-		fov — Camera frustum vertical field of view.<br />
-		aspect — Camera frustum aspect ratio.<br />
-		near — Camera frustum near plane.<br />
-		far — Camera frustum far plane.<br /><br />
+		fov — Camera frustum vertical field of view. (Campo de visión vertical del frustum de la cámara)<br />
+		aspect — Camera frustum aspect ratio. (Relación de aspecto del frustum de la cámara)<br />
+		near — Camera frustum near plane. (Plano cercano del frustum de la Cámara)<br />
+		far — Camera frustum far plane. (Plano lejano del frustum de la Cámara)<br /><br />
 
-			Together these define the camera's [link:https://en.wikipedia.org/wiki/Viewing_frustum viewing frustum].
+		Juntos, estos definen el [link:https://en.wikipedia.org/wiki/Viewing_frustum viewing frustum] la cámara.
 		</p>
 
 
-		<h2>Properties</h2>
+		<h2>Propiedades</h2>
 		<p>
-			See the base [page:Camera] class for common properties.<br>
-			Note that after making changes to most of these properties you will have to call
-			[page:PerspectiveCamera.updateProjectionMatrix .updateProjectionMatrix] for the changes to take effect.
+			Consulte la clase base [page:Camera] para conocer las propiedades comunes.<br>
+			Tenga en cuenta que después de realizar cambios en la mayoría de estas propiedades, deberá llamar a [page:PerspectiveCamera.updateProjectionMatrix .updateProjectionMatrix] para que los cambios surtan efecto.
 		</p>
 
 		<h3>[property:Float aspect]</h3>
-		<p>Camera frustum aspect ratio, usually the canvas width / canvas height. Default is `1` (square canvas).</p>
+		<p>Relación de aspecto del frustum de la cámara, generalmente el ancho del canvas/altura del canvas. El valor predeterminado es `1` (canvas cuadrado).</p>
 
 		<h3>[property:Float far]</h3>
 		<p>
-			Camera frustum far plane. Default is `2000`.<br /><br />
+			Plano lejano del frustum de la Cámara. El valor predeterminado es `2000`.<br /><br />
 
-			Must be greater than the current value of [page:.near near] plane.
+			Debe ser mayor que el valor actual del plano cercano [page:.near near].
 		</p>
 
 		<h3>[property:Float filmGauge]</h3>
-		<p>Film size used for the larger axis. Default is 35 (millimeters). This parameter does not influence the projection matrix unless .filmOffset is set to a nonzero value.</p>
+		<p>Tamaño de película utilizado para el eje más grande. El valor predeterminado es 35 (milímetros). Este parámetro no influye en la matriz de proyección a menos que .filmOffset se establezca en un valor distinto de cero.</p>
 
 		<h3>[property:Float filmOffset]</h3>
-		<p>Horizontal off-center offset in the same unit as `.filmGauge`. Default is `0`.</p>
+		<p>Desplazamiento descentrado horizontal en la misma unidad que `.filmGauge`. El valor predeterminado es `0`.</p>
 
 		<h3>[property:Float focus]</h3>
-		<p>Object distance used for stereoscopy and depth-of-field effects.
-			This parameter does not influence the projection matrix unless a [page:StereoCamera] is being used.
-			Default is `10`.
+		<p>
+			Distancia del objeto utilizada para la estereoscopia y los efectos de profundidad de campo. Este parámetro no influye en la matriz de proyección a menos que se utilice una [page:StereoCamera]. El valor predeterminado es `10`.
 		</p>
 
 		<h3>[property:Float fov]</h3>
-		<p>Camera frustum vertical field of view, from bottom to top of view, in degrees. Default is `50`.</p>
+		<p>Campo de visión vertical troncocónico de la cámara, de abajo hacia arriba, en grados. El valor predeterminado es `50`.</p>
 
 		<h3>[property:Boolean isPerspectiveCamera]</h3>
 		<p>
-			Read-only flag to check if a given object is of type [name].
+			Solo lectura: Indicador para verificar si un objeto dado es del tipo [name].
 		</p>
 
 
 		<h3>[property:Float near]</h3>
 		<p>
-			Camera frustum near plane. Default is `0.1`.<br /><br />
+			Plano cercano del frustum de la Cámara. El valor predeterminado es `0.1`.<br /><br />
 
-			The valid range is greater than 0 and less than the current value of the [page:.far far] plane.
-			Note that, unlike for the [page:OrthographicCamera], `0` is <em>not</em> a valid value
-			for a PerspectiveCamera's near plane.
+			El rango válido es mayor que 0 y menor que el valor actual del plano lejano [page:.far far].
+			Tenga en cuenta que, a diferencia de [page:OrthographicCamera], `0` <em>no</em> es un valor válido para el plano cercano de PerspectiveCamera.
 		</p>
 
 		<h3>[property:Object view]</h3>
 		<p>
-			Frustum window specification or null.
-			This is set using the [page:PerspectiveCamera.setViewOffset .setViewOffset] method
-			and cleared using [page:PerspectiveCamera.clearViewOffset .clearViewOffset].
+			Especificación del Frustum de la ventana o nulo.
+			Esto se configura usando el método [page:PerspectiveCamera.setViewOffset .setViewOffset] y borrado usando [page:PerspectiveCamera.clearViewOffset .clearViewOffset].
 		</p>
 
 		<h3>[property:number zoom]</h3>
-		<p>Gets or sets the zoom factor of the camera. Default is `1`.</p>
+		<p>Obtiene o establece el factor de zoom de la cámara. El valor predeterminado es `1`.</p>
 
 
-		<h2>Methods</h2>
-		<p>See the base [page:Camera] class for common methods.</p>
+		<h2>Métodos</h2>
+		<p>Consulte la clase base [page:Camera] para conocer los métodos comunes.</p>
 
 		<h3>[method:undefined clearViewOffset]()</h3>
-		<p>Removes any offset set by the [page:PerspectiveCamera.setViewOffset .setViewOffset] method.</p>
+		<p>Elimina cualquier desplazamiento establecido por el método [page:PerspectiveCamera.setViewOffset .setViewOffset].</p>
 
 		<h3>[method:Float getEffectiveFOV]()</h3>
-		<p>Returns the current vertical field of view angle in degrees considering .zoom.</p>
+		<p>Devuelve el ángulo del campo de visión vertical actual en grados considerando .zoom.</p>
 
 		<h3>[method:Float getFilmHeight]()</h3>
 		<p>
-		Returns the height of the image on the film. If .aspect is less than or equal to one
-		(portrait format), the result equals .filmGauge.
+			Devuelve la altura de la imagen en la película. Si .aspect es menor o igual a uno (formato de retrato), el resultado es igual a .filmGauge.
 		</p>
 
 		<h3>[method:Float getFilmWidth]()</h3>
 		<p>
-		Returns the width of the image on the film. If .aspect is greater than or equal to one
-		(landscape format), the result equals .filmGauge.
+			Devuelve el ancho de la imagen en la película. Si .aspect es mayor o igual a uno (formato horizontal), el resultado es igual a .filmGauge.
 		</p>
 
 		<h3>[method:Float getFocalLength]()</h3>
-		<p>Returns the focal length of the current .fov in respect to .filmGauge.</p>
+		<p>Devuelve la distancia focal del .fov actual con respecto a .filmGauge.</p>
 
 		<h3>[method:undefined setFocalLength]( [param:Float focalLength] )</h3>
 		<p>
-		Sets the FOV by focal length in respect to the current [page:PerspectiveCamera.filmGauge .filmGauge].<br /><br />
-
-		By default, the focal length is specified for a 35mm (full frame) camera.
+			Establece el FOV por distancia focal con respecto a la [page:PerspectiveCamera.filmGauge .filmGauge] actual.<br /><br />
+			
+			De forma predeterminada, la distancia focal se especifica para una cámara de 35 mm (fotograma completo).
 		</p>
 
 		<h3>[method:undefined setViewOffset]( [param:Float fullWidth], [param:Float fullHeight], [param:Float x], [param:Float y], [param:Float width], [param:Float height] )</h3>
 		<p>
-		fullWidth — full width of multiview setup<br />
-		fullHeight — full height of multiview setup<br />
-		x — horizontal offset of subcamera<br />
-		y — vertical offset of subcamera<br />
-		width — width of subcamera<br />
-		height — height of subcamera
+		fullWidth — full width of multiview setup (ancho completo de la configuración de vista múltiple)<br />
+		fullHeight — full height of multiview setup (altura completa de la configuración de vista múltiple)<br />
+		x — horizontal offset of subcamera. (desplazamiento horizontal de la subcámara)<br />
+		y — vertical offset of subcamera. (desplazamiento vertical de la subcámara)<br />
+		width — width of subcamera. (ancho de la subcámara)<br />
+		height — height of subcamera. (alto de la subcámara)
 		</p>
 
 		<p>
-		Sets an offset in a larger frustum. This is useful for multi-window or multi-monitor/multi-machine setups.
+			Establece un desplazamiento en un frustum más grande. Esto es útil para configuraciones de múltiples ventanas o múltiples monitores/múltiples máquinas.
 		</p>
 
 		<p>
-		For example, if you have 3x2 monitors and each monitor is 1920x1080 and the monitors are in grid like this:<br />
+			Por ejemplo, si tiene monitores de 3x2 y cada monitor es de 1920x1080 y los monitores están en cuadrícula como esta:<br />
 
 		<pre>
 +---+---+---+
@@ -161,8 +154,7 @@
 | D | E | F |
 +---+---+---+
 		</pre>
-
-		then for each monitor you would call it like this:<br />
+		entonces para cada monitor lo llamarías así:<br />
 
 		<code>const w = 1920;
 const h = 1080;
@@ -183,21 +175,21 @@ camera.setViewOffset( fullWidth, fullHeight, w * 1, h * 1, w, h );
 camera.setViewOffset( fullWidth, fullHeight, w * 2, h * 1, w, h );
 </code>
 
-		Note there is no reason monitors have to be the same size or in a grid.
+Tenga en cuenta que no hay razón para que los monitores tengan el mismo tamaño o estén en una cuadrícula.
 		</p>
 
 		<h3>[method:undefined updateProjectionMatrix]()</h3>
 		<p>
-		Updates the camera projection matrix. Must be called after any change of parameters.
+			Actualiza la matriz de proyección de la cámara. Debe llamarse después de cualquier cambio de parámetros.
 		</p>
 
 		<h3>[method:Object toJSON]([param:Object meta])</h3>
 		<p>
-		meta -- object containing metadata such as textures or images in objects' descendants.<br />
-		Convert the camera to three.js [link:https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4 JSON Object/Scene format].
+		meta - objeto que contiene metadatos como texturas o imágenes en los descendientes de los objetos.<br />
+		Convierte la cámara a three.js [link:https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4 JSON Object/Scene format].
 		</p>
 
-		<h2>Source</h2>
+		<h2>Fuente</h2>
 
 		<p>
 			[link:https://github.com/mrdoob/three.js/blob/master/src/[path].js src/[path].js]
