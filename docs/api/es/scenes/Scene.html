@@ -10,7 +10,7 @@
 		[page:Object3D] &rarr;
 		<h1>[name]</h1>
 
-		<p class="desc">Scenes allow you to set up what and where is to be rendered by three.js. This is where you place objects, lights and cameras.</p>
+		<p class="desc">Escenas le permite configurar qué y dónde debe renderizar three.js. Aquí es donde colocas objetos, luces y cámaras.</p>
 
 
 		<h2>Constructor</h2>
@@ -18,7 +18,7 @@
 
 		<h3>[name]()</h3>
 		<p>
-		Create a new scene object.
+			Crea un nuevo objeto de escena.
 		</p>
 
 
@@ -26,14 +26,14 @@
 
 		<h3>[property:Object background]</h3>
 		<p>
-		If not null, sets the background used when rendering the scene, and is always rendered first.
-		Can be set to a [page:Color] which sets the clear color, a [page:Texture] covering the canvas, a cubemap as a [page:CubeTexture] or an equirectangular as a [page:Texture] . Default is null.
+			Si no es nulo, establece el fondo utilizado al renderizar la escena y siempre se renderiza primero.
+			Se puede establecer en [page:Color] que establece el color claro, una [page:Texture] que cubre el lienzo, un mapa de cubos como [page:CubeTexture] o un equirrectangular como [page:Texture] . El valor predeterminado es nulo.
 		</p>
 
 		<h3>[property:Texture environment]</h3>
 		<p>
-		If not null, this texture is set as the environment map for all physical materials in the scene.
-		However, it's not possible to overwrite an existing texture assigned to [page:MeshStandardMaterial.envMap]. Default is null.
+			Si no es nula, esta textura se establece como mapa de entorno para todos los materiales físicos de la escena.
+			Sin embargo, no es posible sobrescribir una textura existente asignada a [page:MeshStandardMaterial.envMap]. El valor predeterminado es nulo.
 		</p>
 
 		<h3>[property:Fog fog]</h3>
@@ -42,22 +42,22 @@
 
 		<h3>[property:Boolean isScene]</h3>
 		<p>
-			Read-only flag to check if a given object is of type [name].
+			Solo lectura: Indicador para verificar si un objeto dado es del tipo [name].
 		</p>
 
 		<h3>[property:Material overrideMaterial]</h3>
 
-		<p>If not null, it will force everything in the scene to be rendered with that material. Default is null.</p>
+		<p>Si no es nulo, forzará que todo en la escena se renderice con ese material. El valor predeterminado es nulo.</p>
 
-		<h2>Methods</h2>
+		<h2>Métodos</h2>
 
 		<h3>[method:Object toJSON]( [param:Object meta] )</h3>
 		<p>
-		meta -- object containing metadata such as textures or images for the scene.<br />
-		Convert the scene to three.js [link:https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4 JSON Object/Scene format].
+		meta - objeto que contiene metadatos como texturas o imágenes para la escena.<br />
+		Convierte la escena a three.js [link:https://github.com/mrdoob/three.js/wiki/JSON-Object-Scene-format-4 JSON Object/Scene format].
 		</p>
 
-		<h2>Source</h2>
+		<h2>Fuente</h2>
 
 		<p>
 			[link:https://github.com/mrdoob/three.js/blob/master/src/[path].js src/[path].js]
