@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>Este es un módulo un poco complejo. Se trata de una instancia de la clase `THREE.AmbientLight`.
+		Que a su vez, dentro de esta misma instancia se coloca otra instancia distinta, pero de la clase `THREE.DirectionalLight`.</p>
+	<p>Esto se puede hacer debido a que tanto la `luz ambiental` como la `luz direccional` extienden de la clase `Object3D`, la cual permite a travez del método `.add()` agregar otros Object3D como hijos del mismo Object3D.</p>
+	<p>Es una manera organizada pero poco elegante de tener un único módulo con todo lo relacionado a las luces.</p>
+
+	La ubicación de este módulo es `src/basic/Light.js`.
+
+	<h2>Código</h2>
+	<p>Nuevamente se vueve a exportar la instancia con las palabras claves `export default`.</p>
+	<code>
+const ambientLight = new THREE.AmbientLight(0x404040); // soft white light
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(-10, 10, 10)
+ambientLight.add(directionalLight)
+
+export default ambientLight
+		</code>
+
+	<h2>Exportar un módulo por defecto</h2>
+	<p>Notar que el nombre de la instancia es `ambientLight` pero en el paso `EntryPoint` la instancia de la luz se llama `light`.</p>
+	<p>Esto es posible debido a que cuando se exporta un objeto usando la palabra clave `default` se permite utilizar un alias sin ninguna sintaxis especial.</p>
+
+	<div style="text-align: right;"><b>El próximo paso es `LoopMachine` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>

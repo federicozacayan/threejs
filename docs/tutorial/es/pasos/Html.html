@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>El primer paso consiste en crear un archivo `index.html` que reúna todos los
+		archivos necesarios para comenzar.</p>
+
+	<h2>NOTA</h2>
+	<p>
+		Este es el primero de los 9 pasos del tutorial práctico, moderno, escalabe y profesional de `three.js` que se
+		ofrece
+		con un enfoque completamente diferente al tutorial de la documentación oficial.
+		Al finalizar cada uno de los pasos, encontrarás una referencia al próximo paso.
+	</p>
+
+
+	<h2>Código</h2>
+	<p>Se asume que se cuenta con conocimientos básicos de `HTML`, `CSS`, y `JavaScript`</p>
+	<code>
+&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;Tutorial de three.js&#x3C;/title&#x3E;
+    &#x3C;style&#x3E;
+        body { margin: 0; }
+    &#x3C;/style&#x3E;
+    &#x3C;script src=&#x22;js/three.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;src/index.js&#x22; type=&#x22;module&#x22;&#x3E;&#x3C;/script&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;
+		</code>
+
+	<h2>CSS</h2>
+	<p>Se puede colocar el `CSS` en otro archivo. Por ejemplo, en una subcarpeta con el nombre `css`:</p>
+	<code>
+&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html&#x3E;
+&#x3C;head&#x3E;
+	&#x3C;title&#x3E;Tutorial de three.js&#x3C;/title&#x3E;
+	&#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;css/style.css&#x22;&#x3E;
+	&#x3C;script src=&#x22;js/three.js&#x22; defer&#x3E;&#x3C;/script&#x3E;
+	&#x3C;script src=&#x22;src/index.js&#x22; type=&#x22;module&#x22;&#x3E;&#x3C;/script&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+	
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;
+		</code>
+	<p>En cuyo caso el contenido del archivo `css/style.css` sería el siguiente</p>
+	<code>
+			body { margin: 0; }
+		</code>
+
+	<h2>Subcarpetas con archivos Javascript</h2>
+	<p>Será necesario crear dos subcarpetas. La subcarpeta `/js` y la subcarpeta `/src`.</p>
+
+	<p>La primera de las subcarpetas tendrá la libreria `three.js` que se podrá obtener
+		[link:https://threejs.pro/build/three.js aqui]. Y la misma se ejecutará luego de cargar todo el HTML debido al
+		atributo `defer` de la etiqueta `script`.</p>
+	<p>La segunda de las subcarpetas contendrá el codigo de la aplicación, incluyendo el archivo `entry point` con el
+		nombre `index.js` donde comenzará el hilo de la ejecución de la misma. Este archivo también se ejecutará luego
+		de la carga de todo el HTML y después de la ejecución del código de la librería.</p>
+
+	<p>A diferencia del código de la librería, el archivo `index.js` podrá utilizar la sintaxis de los módulos
+		`EcmaScript` debido a que se en la etiqueta script se incluyó el atributo `type="module"`.</p>
+
+	<div style="text-align: right;"><b>El próximo paso es `EntryPoint` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>

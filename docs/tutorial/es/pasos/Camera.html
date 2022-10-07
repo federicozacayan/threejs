@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>En realidad se trata de una instancia de la clase `THREE.PerspectiveCamera`. Hay otros tipos de cámaras pero ésta
+		es la más común.</p>
+	<p>Se debe crear este módulo en la siguiete hubicación: `src/basic/Camera.js`.</p>
+
+	<h2>Código</h2>
+	<p>En este ejemplo no se utilizan los valores por defecto, pero los siguientes valores son los que se suelen usar.
+	</p>
+	<code>
+const camera = new THREE.PerspectiveCamera(
+	//Campo de visión vertical del frustum de la cámar
+	75, 
+	//Relación de aspecto del frustum de la cámara
+	window.innerWidth / window.innerHeight, 
+	//Plano cercano del frustum de la Cámara
+	0.1, 
+	//Plano lejano del frustum de la Cámara
+	1000 
+);
+
+export default camera
+		</code>
+
+	<h2>Módulo Camera</h2>
+	<p>Como vimos en el módulo anterio, en la parte final del archivo se exporta la instancia usando las palabras claves
+		`export default`.</p>
+
+	<div style="text-align: right;"><b>El próximo paso es `Renderer` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>

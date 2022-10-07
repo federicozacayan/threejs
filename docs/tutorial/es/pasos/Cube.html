@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>Es una instancia de la clase `THREE.Mesh()` , que recibe dos parámetros: `geometry` y `material`.</p>
+	<p>La ubicación de este módulo es `src/basic/shapes/Cube.js`.</p>
+	<p>`mesh` significa maya en español.</p>
+
+	<h2>Código</h2>
+	<p>Nuevamente se vuelve a encapsular la complejidad de la construcción de la instancia dentro del módulo
+		y se exporta simplemente la instancia, que queda lista para ser usada.</p>
+	<code>
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+
+export default cube
+		</code>
+
+	<h2>Modulo Cube</h2>
+	<p>En pocas palabras el `cubo` se construye con una `geometría` y un `material`.</p>
+	<p>Una `geometría` es un conjunto de puntos distribuidos en el espacio con el que se formarán triángulos.</p>
+	<p>Por otro lado, un `material` es una instancia de una clase que contiene información de cómo se pintarán los
+		triángulos de la `maya`.</p>
+
+
+	<div style="text-align: right;"><b>El próximo paso es `Light` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+		
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>

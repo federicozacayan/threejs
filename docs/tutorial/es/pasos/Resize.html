@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>Este es un módulo encargado de ajustar el tamaño del canvas cuando la ventana cambia de tamaño.</p>
+	<p>La ubicación de este módulo es `src/basic/Resize.js`.</p>
+
+	<h2>Código</h2>
+	<p>Este módulo depende de la `camara` y del `renderizador`.</p>
+	<p>Al módulo de la `camara` se accede utilizando `imports`.</p>
+	<p>Al módulo del `renderizador` se accede a travez de la inyeción del objeto en el método `.start()`</p>
+	<p>La `camara` debería insertarse como se inserta el `renderizador`, pero no es un gran problema hacerlo de esta
+		manera.</p>
+	<code>
+import camera from &#x22;./Camera.js&#x22;
+
+class Resize {
+    constructor() {
+        this.renderer = null
+    }
+    start(renderer) {
+        this.renderer = renderer
+        window.addEventListener(&#x27;resize&#x27;, this.resize)
+    }
+    stop() {
+        window.removeEventListener(&#x27;resize&#x27;, this.resize)
+    }
+    resize = () =&#x3E; {
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+}
+
+const resize = new Resize()
+
+export default resize
+		</code>
+
+	<h2>Módulo Resize</h2>
+	<p>Se recomienda ver en la documentacion el apartado llamado `Como actualizar cosas`.</p>
+
+	<div style="text-align: right;"><b>Este fue el último paso de este tutorial.</b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>

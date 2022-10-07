@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>Este archivo se encarga de ejecutar la aplicación y esta ubicado en la subcarpeta `src/index.js`.</p>
+
+	<h2>Código</h2>
+	<p>En la primera parte de este archivo se importan diferentes módulos `EcmaScript`.</p>
+	<p>En la segunda parte del archivo está el código de la aplicación.</p>
+	<code>
+import scene from &#x22;./basic/Scene.js&#x22;;
+import camera from &#x22;./basic/Camera.js&#x22;;
+import renderer from &#x22;./basic/Renderer.js&#x22;;
+import cube from &#x22;./basic/shapes/Cube.js&#x22;;
+import loopMachine from &#x22;./basic/LoopMachine.js&#x22;;
+import resize from &#x22;./basic/Resize.js&#x22;;
+import light from &#x22;./basic/Light.js&#x22;;
+
+scene.add(cube);
+scene.add(light)
+
+camera.position.set(2,2,2)
+camera.lookAt(cube.position)
+
+loopMachine.addCallback(() =&#x3E; {
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+})
+
+resize.start(renderer)
+loopMachine.start()
+		</code>
+
+	<h2>Módulos</h2>
+	<p>Los objetos utilizados aquí, tales como `scene`, `cube`, `light`, `camera`, `loopMachine`, `renderer` y `resize`
+		provienen de otros archivos.</p>
+
+	<div style="text-align: right;"><b>El próximo paso es `Scene` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>

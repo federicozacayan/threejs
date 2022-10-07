@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<base href="../../../" />
+		<script src="page.js"></script>
+		<link type="text/css" rel="stylesheet" href="page.css" />
+	</head>
+	<body>
+		<h1>[name]</h1>
+		<p>Este módulo es un módulo especial que permite agregar o quitar callbacks en tiempo de ejecución.</p>
+		<p>La ubicación de este módulo es `src/basic/LoopMachine.js`.</p>
+		<p>Es el módulo encargado de generar un loop que se ejecute 60 frames por segundo.</p>
+
+		
+		<h2>Modulo LoopMachine</h2>
+		<p>Se trata de una clase con un contenedor de callbacks, con posibilidad de agregar y quitar callbacks en tiempo de ejecución, y capacidad de pausarse.</p>
+		<code>
+class LoopMachine {
+    constructor() {
+        this.flag = false
+        this.callbacks = []
+    }
+    addCallback(callback) {
+        let index = this.callbacks.indexOf(callback)
+        if (index &#x3E; -1) return
+        this.callbacks.push(callback)
+    }
+    removeCallback(callback) {
+        let index = this.callbacks.indexOf(callback)
+        if (index &#x3E; -1) this.callbacks.splice(index, 1)
+    }
+    run = () =&#x3E; {
+        if (!this.flag) return
+        this.callbacks.forEach(cb =&#x3E; cb())
+        window.requestAnimationFrame(this.run)
+    }
+    start() {
+        if (this.flag) return
+        this.flag = true
+        this.run()
+    }
+    stop() {
+        this.flag = false
+    }
+}
+
+const loopMachine = new LoopMachine()
+
+export default loopMachine
+
+export { LoopMachine }
+		</code>
+
+		<h2>Módulo LoopMachine para proyectos complejos</h2>
+		<p>Con este módulo se introduce una nueva práctica relacionada a los juegos multijugador. 
+            La posibilidad de utilizar la instancia cuando se trata de proyectos pequeños. 
+            Pero para proyectos grandes, se puede utilizar varias instancias de la clase `LoopMachine`. 
+            En tal caso será útil contar con la clase en lugar de la instancia.</p>
+
+            <p>Para exportar la clase, se agrega la siguiente linea al final del archivo</p>
+
+            <code>
+                export { LoopMachine }
+            </code>
+
+		<h2>Performance</h2>
+		<p>En esta clase se utilizan los métodos `.start()` y `.stop()` que permiten pausar las animaciones deteniendo 
+            el loop que utiliza `requestAnimationFrame`. Creando asi, una heramienta más para la optimización de proyectos 
+            grandes o complejos.</p>
+
+        	<div style="text-align: right;"><b>El próximo paso es `Resize` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+
+    <br>
+    <br>
+    [link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+    <br>
+    <br>
+    <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+	</body>
+</html>

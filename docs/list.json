@@ -437,13 +437,26 @@
 
 	},
 	"es": {
-		
+		"Tutorial": {
+	
+			"Pasos": {
+				"001 - HTML": "tutorial/es/pasos/Html",
+				"002 - EntryPoint": "tutorial/es/pasos/EntryPoint",
+				"003 - Scene ": "tutorial/es/pasos/Scene",
+				"004 - Camera": "tutorial/es/pasos/Camera",
+				"005 - Renderer": "tutorial/es/pasos/Renderer",
+				"006 - Cube": "tutorial/es/pasos/Cube",
+				"007 - Light": "tutorial/es/pasos/Light",
+				"008 - LoopMachine": "tutorial/es/pasos/LoopMachine",
+				"009 - Resize": "tutorial/es/pasos/Resize"
+			}
+		},
 		"Manual": {
 	
 			"Primeros Pasos": {
 				"Creando una escena": "manual/es/introduction/Creando-una-escena",
-				"Instalación": "manual/es/introduction/Instalacion",
-				"Comprobación de compatibilidad con WebGL": "manual/es/introduction/Comprobacion-de-compatibilidad-con-WebGL",
+				"Instalacion": "manual/es/introduction/Instalacion",
+				"Comprobacion de compatibilidad con WebGL": "manual/es/introduction/Comprobacion-de-compatibilidad-con-WebGL",
 				"Levantar servidor localmente": "manual/es/introduction/Levantar-servidor-localmente",
 				"Dibujando Líneas": "manual/es/introduction/Dibujando-Lineas",
 				"Creando texto": "manual/es/introduction/Creando-texto",
@@ -453,13 +466,13 @@
 				"Links Útiles": "manual/es/introduction/Links-Utiles"
 			},
 	
-			"Próximos Pasos": {
-				"Cómo actualizar cosas": "manual/es/introduction/Como-actualizar-cosas",
-				"Cómo deshacerse de los objetos": "manual/es/introduction/Como-deshacerse-de-los-objetos",
-				"Cómo crear contenido VR": "manual/es/introduction/Como-crear-contenido-VR",
-				"Cómo utilizar post-processing": "manual/es/introduction/Como-utilizar-post-processing",
+			"Proximos Pasos": {
+				"Como actualizar cosas": "manual/es/introduction/Como-actualizar-cosas",
+				"Como deshacerse de los objetos": "manual/es/introduction/Como-deshacerse-de-los-objetos",
+				"Como crear contenido VR": "manual/es/introduction/Como-crear-contenido-VR",
+				"Como utilizar post-processing": "manual/es/introduction/Como-utilizar-post-processing",
 				"Transformaciones de matrices": "manual/es/introduction/Transformaciones-de-matrices",
-				"Sistema de animación": "manual/es/introduction/Sistema-de-animacion",
+				"Sistema de animacion": "manual/es/introduction/Sistema-de-animacion",
 				"Manejo del Color": "manual/es/introduction/Manejo-del-Color"
 			},
 	
@@ -1803,11 +1816,11 @@
 				"Links úteis": "manual/pt-br/introduction/Useful-links"
 			},
 
-			"Próximos Passos": {
+			"Proximos Passos": {
 				"Como atualizar as coisas": "manual/pt-br/introduction/How-to-update-things",
 				"Como descartar objetos": "manual/pt-br/introduction/How-to-dispose-of-objects",
 				"Como criar conteúdo de VR": "manual/pt-br/introduction/How-to-create-VR-content",
-				"Como usar o pós-processamento": "manual/pt-br/introduction/How-to-use-post-processing",
+				"Como usar o pos-processamento": "manual/pt-br/introduction/How-to-use-post-processing",
 				"Transformações de matriz": "manual/pt-br/introduction/Matrix-transformations",
 				"Sistema de animação": "manual/pt-br/introduction/Animation-system",
 				"Gerenciamento de cor": "manual/pt-br/introduction/Color-management"

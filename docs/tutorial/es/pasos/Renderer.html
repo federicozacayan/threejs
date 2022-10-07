@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<base href="../../../" />
+	<script src="page.js"></script>
+	<link type="text/css" rel="stylesheet" href="page.css" />
+</head>
+
+<body>
+	<h1>[name]</h1>
+	<p>El módulo `Renderer` es el módulo central de todo el sistema. Es una instancia de la clase
+		`THREE.WebGLRenderer()`.</p>
+	<p>La ubicación de este módulo es `src/basic/Renderer.js`.</p>
+
+	<h2>Código</h2>
+	<p>En este módulo, además de instanciar la clase `THREE.WebGLRenderer`, se configura las dimenciones del canvas y se
+		coloca dicho canvas dentro del `body` del archivo `html`.</p>
+	<code>
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+export default renderer
+		</code>
+
+	<h2>Módulo Renderer</h2>
+	<p>Como se ha visto en los pasos anteriores, se exporta la instancia con las palabras claves `export default`.</p>
+	<p>Adicionalmente, se generan algunas configuraciones, pero quedan encapsuladas en el mismo módulo y son totalmente
+		transparentes de su implementación.</p>
+	<p>Es decir, en la implementacion no se visualiza la complejidad del módulo y queda oculta dentro del mismo módulo.
+	</p>
+
+	<div style="text-align: right;"><b>El próximo paso es `Cube` </b></div>
+	<hr>
+
+	<h3>Video tutorial</h3>
+	<p>El siguiente es un video don de se realizan todos los pasos de este tutorial.</p>
+
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/kr3PStGT9Qo" title="YouTube video player"
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen></iframe>
+
+	<br>
+	<br>
+	[link:https://www.udemy.com/course/metaverso-con-threejs-en-javascript/ Curso de three.js]
+	<br>
+	<br>
+	<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Curso de three.js">
+</body>
+
+</html>
