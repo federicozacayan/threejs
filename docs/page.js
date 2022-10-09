@@ -143,7 +143,21 @@ function onDocumentLoad() {
 	};
 
 	document.head.appendChild( prettify );
-
+	const synth = window.speechSynthesis;
+	document.querySelectorAll("p").forEach(p=>{
+		p.addEventListener('click',(e)=>{
+			console.log(2);
+			let str = p.textContent
+			str = str.replaceAll('\n','')
+			console.log(str)
+			const utterThis = new SpeechSynthesisUtterance(str);
+			// voiceConfiguration(utterThis)
+			
+			utterThis.voice = synth.getVoices()[132]
+			// console.log(utterThis.voice);
+			window.speechSynthesis.speak(utterThis);
+		})
+	})
 }
 
 document.addEventListener( 'DOMContentLoaded', onDocumentLoad, false );

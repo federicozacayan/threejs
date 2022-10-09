@@ -8,16 +8,36 @@
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="@threejs">
 	<meta name="twitter:title" content="Three.js – JavaScript 3D library">
+	<meta property="og:image" content="https://threejs.org/files/share.png">
 	<link rel="shortcut icon" href="files/favicon_white.ico" media="(prefers-color-scheme: dark)" />
 	<link rel="shortcut icon" href="files/favicon.ico" media="(prefers-color-scheme: light)" />
 	<link rel="stylesheet" type="text/css" href="files/main.css">
 	<style>
-		body {
+		body{
+			margin: 0;
+			overflow-x: hidden;
+		}
+		.landing-container {
 			text-align: center;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			flex-flow: column;
+		}
+
+		section, #iframe, .landing-container > div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-flow: column;
+			max-width: 100%;
+			height: 100vh;
+		}
+
+		#iframe {
+
+
+			margin: auto;
 		}
 	</style>
 	<!-- Google Tag Manager -->
@@ -47,15 +67,28 @@
 			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 
-	<h1><a href="docs/#tutorial/es/pasos/Html">Bienvenido a threejs.pro</a></h1>
-	<h1><a href="docs/#manual/it/introduction/Creating-a-scene">Benvenuto su threejs.pro</a></h1>
-	<h1><a href="docs/#manual/fr/introduction/Creating-a-scene">Bienvenue sur threejs.pro</a></h1>
-	<h1><a href="docs/#manual/en/introduction/Creating-a-scene">Welcome to threejs.pro</a></h1>
-	<h1><a href="docs/#manual/pt-br/introduction/Creating-a-scene">Bem-vindo ao threejs.pro</a></h1>
-	<h1><a href="docs/#manual/zh/introduction/Creating-a-scene">歡迎來到threejs.pro</a></h1>
-	<h1><a href="docs/#manual/ja/introduction/Creating-a-scene">threejs.proへようこそ</a></h1>
-	<h1><a href="docs/#manual/ko/introduction/Creating-a-scene">threejs.pro에 오신 것을 환영합니다.</a></h1>
-	<h1><a href="docs/#manual/ar/introduction/Creating-a-scene">مرحبًا بك في threejs.pro</a></h1>
+
+
+	<div class="landing-container">
+		<section>
+			<iframe id="iframe" src="https://www.youtube.com/embed/g6q9NeNd9RI" title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen></iframe>
+		</section>
+	
+	
+		<div>
+			<h1><a href="docs/#tutorial/es/pasos/Html">Bienvenido a threejs.pro</a></h1>
+			<h1><a href="docs/#manual/it/introduction/Creating-a-scene">Benvenuto su threejs.pro</a></h1>
+			<h1><a href="docs/#manual/fr/introduction/Creating-a-scene">Bienvenue sur threejs.pro</a></h1>
+			<h1><a href="docs/#manual/en/introduction/Creating-a-scene">Welcome to threejs.pro</a></h1>
+			<h1><a href="docs/#manual/pt-br/introduction/Creating-a-scene">Bem-vindo ao threejs.pro</a></h1>
+			<h1><a href="docs/#manual/zh/introduction/Creating-a-scene">歡迎來到threejs.pro</a></h1>
+			<h1><a href="docs/#manual/ja/introduction/Creating-a-scene">threejs.proへようこそ</a></h1>
+			<h1><a href="docs/#manual/ko/introduction/Creating-a-scene">threejs.pro에 오신 것을 환영합니다.</a></h1>
+			<h1><a href="docs/#manual/ar/introduction/Creating-a-scene">مرحبًا بك في threejs.pro</a></h1>
+		</div>
+	</div>
 
 
 </body>
